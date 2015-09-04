@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B66-PN-YBe">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--ClientController-->
+        <scene sceneID="gtV-s7-f7C">
+            <objects>
+                <controller identifier="ClientController" id="B66-PN-YBe" customClass="ClientController" customModule="workTrackR_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="ne7-qg-5Ex">
+                            <items>
+                                <tableRow identifier="ClientRow" id="qgV-I5-UKC" customClass="ClientRow" customModule="workTrackR_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="3Qx-xx-2zJ">
+                                        <items>
+                                            <label height="20" alignment="left" verticalAlignment="center" text="Client.name" id="0mK-Bb-JiQ"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="nameLabelOutlet" destination="0mK-Bb-JiQ" id="78C-S1-zZE"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableOutlet" destination="ne7-qg-5Ex" id="eMw-j6-0OF"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-190" y="425"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Assignment" representedClassName="Assignment" syncable="YES">
+        <attribute name="begin" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="done" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="client" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="assignments" inverseEntity="Client" syncable="YES"/>
+    </entity>
+    <entity name="Client" representedClassName="Client" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="assignments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Assignment" inverseName="client" inverseEntity="Assignment" syncable="YES"/>
+    </entity>
+    <entity name="CommandTunnel" representedClassName="CommandTunnel" syncable="YES">
+        <attribute name="command" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Assignment" positionX="333" positionY="170" width="128" height="118"/>
+        <element name="Client" positionX="9" positionY="81" width="128" height="88"/>
+        <element name="CommandTunnel" positionX="142" positionY="-96" width="128" height="60"/>
+    </elements>
 </model>

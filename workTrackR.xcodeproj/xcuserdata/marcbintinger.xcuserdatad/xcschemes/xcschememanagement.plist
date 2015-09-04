@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>workTrackR WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>workTrackR.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>30727E631B8CE47900F76520</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30727E811B8CE50400F76520</key>
 		<dict>
 			<key>primary</key>
 			<true/>
