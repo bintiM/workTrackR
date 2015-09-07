@@ -26,6 +26,8 @@
 		305DB9281B92030400F2E6A2 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305DB9271B92030400F2E6A2 /* ClientTableViewCell.swift */; };
 		3067D46A1B937E80000D9F1E /* bMHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067D4691B937E80000D9F1E /* bMHelper.swift */; };
 		3067D46C1B93897A000D9F1E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3067D46B1B93897A000D9F1E /* UIView+Extension.swift */; };
+		306FE9A31B9D742F00420B6D /* AssignmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FE9A21B9D742F00420B6D /* AssignmentController.swift */; };
+		306FE9A51B9D745800420B6D /* AssignmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306FE9A41B9D745800420B6D /* AssignmentRow.swift */; };
 		307137541B8F96A6003726DB /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307137531B8F96A6003726DB /* CoreData.swift */; };
 		307137551B8F96A6003726DB /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307137531B8F96A6003726DB /* CoreData.swift */; };
 		307137561B8F9AA8003726DB /* workTrackR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30727E531B8CE47900F76520 /* workTrackR.xcdatamodeld */; };
@@ -100,6 +102,8 @@
 		305DB9271B92030400F2E6A2 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
 		3067D4691B937E80000D9F1E /* bMHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bMHelper.swift; sourceTree = "<group>"; };
 		3067D46B1B93897A000D9F1E /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		306FE9A21B9D742F00420B6D /* AssignmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignmentController.swift; sourceTree = "<group>"; };
+		306FE9A41B9D745800420B6D /* AssignmentRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignmentRow.swift; sourceTree = "<group>"; };
 		307137531B8F96A6003726DB /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		30727E4C1B8CE47900F76520 /* workTrackR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workTrackR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30727E501B8CE47900F76520 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				30C9AC081B8CEC2B00804FDB /* workTrackR WatchKit Extension.entitlements */,
 				303023311B99F5270089CA2B /* ClientController.swift */,
 				303023341B99F5B80089CA2B /* ClientRow.swift */,
+				306FE9A21B9D742F00420B6D /* AssignmentController.swift */,
+				306FE9A41B9D745800420B6D /* AssignmentRow.swift */,
 				30727E7E1B8CE50400F76520 /* Images.xcassets */,
 				30727E7A1B8CE50400F76520 /* Supporting Files */,
 			);
@@ -485,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				303749C91B933F8D00983872 /* Client+Extension.swift in Sources */,
+				306FE9A31B9D742F00420B6D /* AssignmentController.swift in Sources */,
 				30C9AC0C1B8CF5FA00804FDB /* Common.swift in Sources */,
 				303023331B99F5270089CA2B /* ClientController.swift in Sources */,
 				303023301B99D4FE0089CA2B /* bMCheckCircle.swift in Sources */,
@@ -496,6 +503,7 @@
 				305DB91E1B91FF4000F2E6A2 /* Assignment.swift in Sources */,
 				303023351B99F5B80089CA2B /* ClientRow.swift in Sources */,
 				3076BAFE1B9A1934006DB27F /* Assignment+Extension.swift in Sources */,
+				306FE9A51B9D745800420B6D /* AssignmentRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

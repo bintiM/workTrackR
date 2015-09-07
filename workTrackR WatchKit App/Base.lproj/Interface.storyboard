@@ -16,6 +16,13 @@
                                     <group key="rootItem" width="1" alignment="left" id="3Qx-xx-2zJ">
                                         <items>
                                             <label height="20" alignment="left" verticalAlignment="center" text="Client.name" id="0mK-Bb-JiQ"/>
+                                            <button width="30" height="30" alignment="right" verticalAlignment="center" title="detail" id="DrL-9v-6lV">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <segue destination="3rW-H5-KYj" kind="push" identifier="AssignmentController" id="zlE-di-ODv"/>
+                                                </connections>
+                                            </button>
                                         </items>
                                     </group>
                                     <connections>
@@ -31,6 +38,35 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="-190" y="425"/>
+        </scene>
+        <!--AssignmentController-->
+        <scene sceneID="YZY-pd-6Wu">
+            <objects>
+                <controller identifier="AssignmentController" id="3rW-H5-KYj" customClass="AssignmentController" customModule="workTrackR_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="yHV-Gy-0yb">
+                            <items>
+                                <tableRow identifier="AssignmentRow" id="LQZ-ZB-WT5" customClass="AssignmentRow" customModule="workTrackR_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="SXW-Lu-Sbx">
+                                        <items>
+                                            <label height="20" alignment="left" verticalAlignment="center" text="Label" id="o00-PW-QvM"/>
+                                            <button width="30" height="30" alignment="right" verticalAlignment="center" id="vXL-Fy-aJi"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="doneButtonOutlet" destination="vXL-Fy-aJi" id="u6p-bj-r3c"/>
+                                        <outlet property="nameLabelOutlet" destination="o00-PW-QvM" id="vCp-Xc-nWd"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableOutlet" destination="yHV-Gy-0yb" id="WC6-MF-COn"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="153" y="429"/>
         </scene>
     </scenes>
 </document>

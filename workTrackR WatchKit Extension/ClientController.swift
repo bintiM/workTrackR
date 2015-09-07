@@ -36,6 +36,17 @@ class ClientController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    override func contextForSegueWithIdentifier(segueIdentifier: String, inTable table: WKInterfaceTable, rowIndex: Int) -> AnyObject? {
+        if segueIdentifier == "AssignmentController" {
+            if let clientRow = tableOutlet.rowControllerAtIndex(rowIndex) as? ClientRow, client = clientRow.client {
+                let context = AssignmentControllerContext()
+                context.client = client
+                return context
+            }
+        }
+        return nil
+    }
+    
     func checkCommand() {
         if CommandTunnel.wasCommandAvailable(kPhoneChangedData) {
             reloadData()

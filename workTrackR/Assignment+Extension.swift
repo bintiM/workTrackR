@@ -15,7 +15,6 @@ extension Assignment {
         assignment.client = client
         assignment.desc = description
         CoreData.sharedInstance.saveContext()
-        
         return assignment
     }
     

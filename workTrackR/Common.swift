@@ -18,6 +18,7 @@ let kAssignmentOrder = "begin"
 let kAssignmentTableViewController = "AssignmentTableViewController"
 
 let kClientRow = "ClientRow"
+let kAssignmentRow = "AssignmentRow"
 
 let kCommandTunnelEntity = "CommandTunnel"
 
