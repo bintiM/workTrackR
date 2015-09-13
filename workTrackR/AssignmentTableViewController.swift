@@ -17,6 +17,8 @@ extension AssignmentTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
+        //sag der Uhr, dass sich etwas geändert hat
+        CommandTunnel.addCommand(kChangedData)
         
         //ist updateTimer != nil dann invalidate
         updateTimer?.invalidate()
@@ -50,6 +52,7 @@ class AssignmentTableViewController: UITableViewController {
 
     private var fontSizeObserver:NSObjectProtocol!
     private var updateTimer:NSTimer!
+    private var commandTunnelTimer:NSTimer!
     
     var client:Client! {
         didSet {
@@ -59,7 +62,7 @@ class AssignmentTableViewController: UITableViewController {
     
     private lazy var fetchedResultsController:NSFetchedResultsController! = {
         let request = NSFetchRequest(entityName: kAssignmentEntity)
-        request.sortDescriptors = [NSSortDescriptor(key: kAssignmentOrder, ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: kAssignmentOrder, ascending: false)]
         request.predicate = NSPredicate(format: "client == %@", self.client)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -74,6 +77,10 @@ class AssignmentTableViewController: UITableViewController {
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
         navigationItem.setRightBarButtonItems([addButton, deleteAllButton], animated: true)
+        
+        // keine leere Zeile im TableView unterhalb
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        
     }
     
     deinit {
@@ -83,29 +90,50 @@ class AssignmentTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        CommandTunnel.deleteAllCommands()
+        
         fontSizeObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIContentSizeCategoryDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { [weak self](notification) -> Void in
             self?.tableView.reloadData()
             
         }
+        
+        //check new Commands for Updates from Watch
+        commandTunnelTimer?.invalidate()
+        commandTunnelTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "checkCommand", userInfo: nil, repeats: true)
+
+        tableView.reloadData()
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        updateTimer?.invalidate()
         NSNotificationCenter.defaultCenter().removeObserver(fontSizeObserver)
+        
+        updateTimer?.invalidate()
+        commandTunnelTimer?.invalidate()
+
     }
+    
+    
+    func checkCommand() {
+        if CommandTunnel.wasCommandAvailable(kChangedData) {
+            CoreData.sharedInstance.managedObjectContext?.reset()
+            tableView.reloadData()
+        }
+    }
+
     
     // MARK: - barButtonItemActions
     func addAssignment(sender:UIBarButtonItem) {
         
-        let title = NSLocalizedString("titleCreateAssignmentDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Create new Assignment", comment: "titel in alert view controller")
-        let placeholder = NSLocalizedString("placeholderCreateAssignmentDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Assignment", comment: "placeholder for inputTextField in alert view controller")
-        let message = NSLocalizedString("messageCreateAssignmentDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Type in your Assignment desicription", comment: "messager in alert view controller")
-        let ok = NSLocalizedString("okButton", tableName: nil, bundle: NSBundle.mainBundle(), value: "Ok", comment: "ok Button Label")
-        let cancel = NSLocalizedString("cancelButton", tableName: nil, bundle: NSBundle.mainBundle(), value: "Cancel", comment: "cancel button label")
+        let title = NSLocalizedString("titleCreateAssignmentDialog", value: "Create new Assignment", comment: "titel in alert view controller")
+        let placeholder = NSLocalizedString("placeholderCreateAssignmentDialog", value: "Assignment", comment: "placeholder for inputTextField in alert view controller")
+        let message = NSLocalizedString("messageCreateAssignmentDialog", value: "Type in your Assignment desicription", comment: "messager in alert view controller")
+        let ok = NSLocalizedString("okButton", value: "Ok", comment: "ok Button Label")
+        let cancel = NSLocalizedString("cancelButton", value: "Cancel", comment: "cancel button label")
         
         let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { [weak self] (text) -> Void in
-            Assignment.createAssignmentForClient(self!.client, withDescription: text)
+            Assignment.createAssignmentForClientNow(self!.client, withDescription: text)
         }
         
         presentViewController(dialog, animated: true, completion: nil)
@@ -114,10 +142,10 @@ class AssignmentTableViewController: UITableViewController {
     
     func deleteAll(sender:UIBarButtonItem) {
         
-        let title = NSLocalizedString("titleDeleteAllAssignmentDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Delete all Assignment for this Client", comment: "titel in alert view controller")
-        let message = NSLocalizedString("messageDeleteAllAssignmentDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Do you want to delete all Assignment?", comment: "messager in alert view controller")
-        let ok = NSLocalizedString("okButtonDeleteAllAssignment", tableName: nil, bundle: NSBundle.mainBundle(), value: "Yes, delete all Assignment", comment: "delete all Assignment ok Button Label")
-        let cancel = NSLocalizedString("cancelButtonDeleteAllAssignment", tableName: nil, bundle: NSBundle.mainBundle(), value: "Cancel", comment: "cancel button label")
+        let title = NSLocalizedString("titleDeleteAllAssignmentDialog", value: "Delete all Assignment for this Client", comment: "titel in alert view controller")
+        let message = NSLocalizedString("messageDeleteAllAssignmentDialog", value: "Do you want to delete all Assignment?", comment: "messager in alert view controller")
+        let ok = NSLocalizedString("okButtonDeleteAllAssignment", value: "Yes, delete all Assignment", comment: "delete all Assignment ok Button Label")
+        let cancel = NSLocalizedString("cancelButtonDeleteAllAssignment", value: "Cancel", comment: "cancel button label")
         
         let dialog = bMHelper.dialogWithTitle(title, message: message, ok: ok, cancel: cancel) {
             Assignment.deleteAllForClient(self.client)
@@ -164,6 +192,8 @@ class AssignmentTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // hier kommt wahrscheinlich die edit function mit einem subview hinein
+        let assignment = fetchedResultsController.objectAtIndexPath(indexPath) as! Assignment
+        assignment.switchState()
     }
 
 }

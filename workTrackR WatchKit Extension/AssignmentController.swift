@@ -16,6 +16,8 @@ class AssignmentControllerContext {
 
 class AssignmentController: WKInterfaceController {
     
+    private var commandTunnelTimer:NSTimer!
+    
     private var client:Client! {
         didSet {
             setTitle(client.name)
@@ -37,15 +39,36 @@ class AssignmentController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         reloadData()
+        
+        CommandTunnel.deleteAllCommands()
+        
+        commandTunnelTimer?.invalidate()
+        commandTunnelTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "checkCommand", userInfo: nil, repeats: true)
+
     }
 
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
+        commandTunnelTimer?.invalidate()
         super.didDeactivate()
     }
+
+    func checkCommand() {
+        if CommandTunnel.wasCommandAvailable(kChangedData) {
+            CoreData.sharedInstance.managedObjectContext?.reset()
+            
+            if let existingClient = CoreData.managedObjectByURI(client.objectID.URIRepresentation()) as? Client {
+                reloadData()
+            } else { // if client deleted -> go back
+                popController()
+            }
+
+        }
+    }
+    
     
     func reloadData() {
-        CoreData.sharedInstance.managedObjectContext?.reset()
+
         let request = NSFetchRequest(entityName: kAssignmentEntity)
         request.predicate = NSPredicate(format: "client == %@", self.client)
         // request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: true)]

@@ -12,7 +12,7 @@ import CoreData
 @objc(Assignment)
 class Assignment: NSManagedObject {
 
-    @NSManaged var done: NSNumber
+    @NSManaged var running: NSNumber
     @NSManaged var desc: String
     @NSManaged var begin: NSDate
     @NSManaged var end: NSDate

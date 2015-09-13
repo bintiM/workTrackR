@@ -1,0 +1,63 @@
+/* Autogenereated first task */
+"AutoCreatedFirstAssignment" = "erste Tätigkeit für %@";
+
+/* cancel button label */
+"cancelButton" = "Abbrechen";
+
+/* cancel button label */
+"cancelButtonDeleteAllAssignment" = "Abbrechen";
+
+/* cancel button label */
+"cancelButtonDeleteAllClients" = "Abbrechen";
+
+/* messager in alert view controller */
+"messageCreateAssignmentDialog" = "Tragen Sie Ihre Tätigkeitsbeschreibung ein";
+
+/* messager in alert view controller */
+"messageCreateClientDialog" = "Tragen Sie Ihren Kundennamen ein";
+
+/* messager in alert view controller */
+"messageDeleteAllAssignmentDialog" = "Wollen Sie alle Tätigkeiten löschen?";
+
+/* messager in alert view controller */
+"messageDeleteAllClientDialog" = "Wollen Sie alle Kunden löschen?";
+
+/* message in edit alert view controller */
+"messageEditClientDialog" = "Ändern Sie Ihren Kundennamen";
+
+/* ok Button Label */
+"okButton" = "Ok";
+
+/* delete all Assignment ok Button Label */
+"okButtonDeleteAllAssignment" = "Ja, alle Tätigkeiten löschen";
+
+/* delete all clients ok Button Label */
+"okButtonDeleteAllClients" = "ja, alle Kunden löschen";
+
+/* placeholder for inputTextField in alert view controller */
+"placeholderCreateAssignmentDialog" = "Tätigkeit";
+
+/* placeholder for inputTextField in alert view controller */
+"placeholderCreateClientDialog" = "Kunde";
+
+/* placeholder for inputTextField in edit alert view controller */
+"placeholderEditClientDialog" = "Kunde";
+
+/* the navigation bar title */
+"titleClientViewController" = "Kunden";
+
+/* titel in alert view controller */
+"titleCreateAssignmentDialog" = "neue Tätigkeit erstellen";
+
+/* titel in alert view controller */
+"titleCreateClientDialog" = "neuen Kunden erstellen";
+
+/* titel in alert view controller */
+"titleDeleteAllAssignmentDialog" = "Alle Tätigkeiten für diesen Kunden löschen";
+
+/* titel in alert view controller */
+"titleDeleteAllClientDialog" = "Alle Kunden löschen";
+
+/* titel in alert view controller */
+"titleEditClientDialog" = "Kunden bearbeiten";
+

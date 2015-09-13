@@ -27,6 +27,7 @@
                                     </group>
                                     <connections>
                                         <outlet property="nameLabelOutlet" destination="0mK-Bb-JiQ" id="78C-S1-zZE"/>
+                                        <segue destination="2BX-5Z-1dE" kind="push" identifier="ClientDetailController" id="ez3-Cs-Y7x"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -39,6 +40,42 @@
             </objects>
             <point key="canvasLocation" x="-190" y="425"/>
         </scene>
+        <!--ClientDetailController-->
+        <scene sceneID="Xo1-LB-z2a">
+            <objects>
+                <controller identifier="ClientDetailController" id="2BX-5Z-1dE" customClass="ClientDetailController" customModule="workTrackR_WatchKit_Extension">
+                    <items>
+                        <label width="1" alignment="left" text="Clientname:" textAlignment="center" id="jGW-Ry-oN9"/>
+                        <label width="1" alignment="left" text="client.name" numberOfLines="0" id="vjx-J2-tfS"/>
+                        <separator alignment="left" id="NtA-Ae-9h2"/>
+                        <label width="1" alignment="left" text="Assignments:" textAlignment="center" id="p6g-ga-foN"/>
+                        <group width="1" alignment="left" id="wlO-9Y-b5J">
+                            <items>
+                                <label alignment="left" text="Quantity" id="5Wd-hp-vWQ"/>
+                                <label alignment="right" text="# assignments" textAlignment="right" id="WlE-1E-RW7"/>
+                            </items>
+                        </group>
+                        <separator alignment="left" id="4wZ-zk-6VH"/>
+                        <label width="1" alignment="left" text="Chart:" textAlignment="center" numberOfLines="0" id="MX2-mS-Cit"/>
+                        <button width="1" height="100" alignment="left" id="8xs-3o-di0">
+                            <variation key="device=watch38mm" height="136"/>
+                            <variation key="device=watch42mm" height="156"/>
+                            <connections>
+                                <segue destination="3rW-H5-KYj" kind="push" id="aPs-gP-61I"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="assignmentTitleLabelOutlet" destination="p6g-ga-foN" id="YcV-sE-Wpd"/>
+                        <outlet property="clientNameLabelOutlet" destination="vjx-J2-tfS" id="0Ns-DY-fTX"/>
+                        <outlet property="clientTitleLabelOutlet" destination="jGW-Ry-oN9" id="YLM-mP-3ir"/>
+                        <outlet property="quantityLabelOutlet" destination="5Wd-hp-vWQ" id="BrA-Zl-hTm"/>
+                        <outlet property="quantityValueLabelOutlet" destination="WlE-1E-RW7" id="kWr-tA-356"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-190" y="714"/>
+        </scene>
         <!--AssignmentController-->
         <scene sceneID="YZY-pd-6Wu">
             <objects>
@@ -50,12 +87,17 @@
                                     <group key="rootItem" width="1" alignment="left" id="SXW-Lu-Sbx">
                                         <items>
                                             <label height="20" alignment="left" verticalAlignment="center" text="Label" id="o00-PW-QvM"/>
-                                            <button width="30" height="30" alignment="right" verticalAlignment="center" id="vXL-Fy-aJi"/>
+                                            <button width="30" height="30" alignment="right" verticalAlignment="center" id="vXL-Fy-aJi">
+                                                <connections>
+                                                    <action selector="doneButtonAction" destination="LQZ-ZB-WT5" id="VnW-pl-QLJ"/>
+                                                </connections>
+                                            </button>
                                         </items>
                                     </group>
                                     <connections>
                                         <outlet property="doneButtonOutlet" destination="vXL-Fy-aJi" id="u6p-bj-r3c"/>
                                         <outlet property="nameLabelOutlet" destination="o00-PW-QvM" id="vCp-Xc-nWd"/>
+                                        <segue destination="cdM-pl-y4L" kind="push" identifier="AssignmentDetailController" id="hlD-gb-82P"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -68,5 +110,15 @@
             </objects>
             <point key="canvasLocation" x="153" y="429"/>
         </scene>
+        <!--AssignmentDetailController-->
+        <scene sceneID="2ZY-WC-yIg">
+            <objects>
+                <controller identifier="AssignmentDetailController" id="cdM-pl-y4L" customClass="AssignmentDetailController" customModule="workTrackR_WatchKit_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="153" y="714"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aPs-gP-61I"/>
+    </inferredMetricsTieBreakers>
 </document>

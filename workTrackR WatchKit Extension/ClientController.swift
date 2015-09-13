@@ -26,6 +26,9 @@ class ClientController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         reloadData()
+        
+        CommandTunnel.deleteAllCommands()
+        
         commandTunnelTimer?.invalidate()
         commandTunnelTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "checkCommand", userInfo: nil, repeats: true)
     }
@@ -48,13 +51,13 @@ class ClientController: WKInterfaceController {
     }
     
     func checkCommand() {
-        if CommandTunnel.wasCommandAvailable(kPhoneChangedData) {
+        if CommandTunnel.wasCommandAvailable(kChangedData) {
+            CoreData.sharedInstance.managedObjectContext?.reset()
             reloadData()
         }
     }
     
     func reloadData() {
-        CoreData.sharedInstance.managedObjectContext?.reset()
         let request = NSFetchRequest(entityName: kClient)
         request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: true)]
         if let allClients = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [Client] {

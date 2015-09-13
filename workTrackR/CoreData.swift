@@ -15,6 +15,23 @@ class CoreData {
     
     // MARK: - Helper
     
+    static func managedObjectByURI(uri:NSURL) -> NSManagedObject? {
+        CoreData.sharedInstance.managedObjectContext?.reset()
+        if let objectId = CoreData.sharedInstance.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(uri) {
+            if let managedObject = CoreData.sharedInstance.managedObjectContext?.objectWithID(objectId) {
+                if !managedObject.fault {
+                    return managedObject
+                }
+                if let entityName = managedObject.entity.name {
+                    let request = NSFetchRequest(entityName: entityName)
+                    request.predicate = NSPredicate(format: "SELF == %@", objectId)
+                    return CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil)?.first as? NSManagedObject
+                }
+            }
+        }
+        return nil
+    }
+    
     static func move(entityName:String, orderAttributeName:String, source:NSManagedObject, toDestination destination:NSManagedObject, predicate:NSPredicate = NSPredicate(value: true)) {
         
         if let sourceOrder = source.valueForKey(orderAttributeName)?.integerValue,

@@ -17,7 +17,7 @@ extension ClientTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
-        CommandTunnel.addCommand(kPhoneChangedData)
+        CommandTunnel.addCommand(kChangedData)
         
         updateTimer?.invalidate()
         updateTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: tableView, selector: "reloadData", userInfo: nil, repeats: false)
@@ -49,6 +49,7 @@ class ClientTableViewController: UITableViewController {
 
     private var fontSizeObserver:NSObjectProtocol!
     private var updateTimer:NSTimer!
+    private var commandTunnelTimer:NSTimer!
   
     private lazy var fetchedResultsController:NSFetchedResultsController! = {
         let request = NSFetchRequest(entityName: kClient)
@@ -79,7 +80,7 @@ class ClientTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("titleClientViewController", tableName: nil, bundle: NSBundle.mainBundle(), value: "Clients", comment: "the navigation bar title")
+        title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClient:")
         let editButton = UIBarButtonItem(barButtonSystemItem: .Organize, target: editButtonItem().target, action: editButtonItem().action)
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
@@ -100,12 +101,25 @@ class ClientTableViewController: UITableViewController {
             self?.tableView.reloadData()
             
         }
+        
+        commandTunnelTimer?.invalidate()
+        commandTunnelTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "checkCommand", userInfo: nil, repeats: true)
+        
 
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         NSNotificationCenter.defaultCenter().removeObserver(fontSizeObserver)
+        commandTunnelTimer?.invalidate()
+    }
+    
+    
+    func checkCommand() {
+        if CommandTunnel.wasCommandAvailable(kChangedData) {
+            CoreData.sharedInstance.managedObjectContext?.reset()
+            tableView.reloadData()
+        }
     }
 
     //MARK: - Segue
@@ -122,11 +136,11 @@ class ClientTableViewController: UITableViewController {
     // MARK: - barButtonItemActions
     func addClient(sender:UIBarButtonItem) {
         
-        let title = NSLocalizedString("titleCreateClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Create new Client", comment: "titel in alert view controller")
-        let placeholder = NSLocalizedString("placeholderCreateClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Client", comment: "placeholder for inputTextField in alert view controller")
-        let message = NSLocalizedString("messageCreateClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Type in your Clientname", comment: "messager in alert view controller")
-        let ok = NSLocalizedString("okButton", tableName: nil, bundle: NSBundle.mainBundle(), value: "Ok", comment: "ok Button Label")
-        let cancel = NSLocalizedString("cancelButton", tableName: nil, bundle: NSBundle.mainBundle(), value: "Cancel", comment: "cancel button label")
+        let title = NSLocalizedString("titleCreateClientDialog", value: "Create new Client", comment: "titel in alert view controller")
+        let placeholder = NSLocalizedString("placeholderCreateClientDialog", value: "Client", comment: "placeholder for inputTextField in alert view controller")
+        let message = NSLocalizedString("messageCreateClientDialog", value: "Type in your Clientname", comment: "messager in alert view controller")
+        let ok = NSLocalizedString("okButton", value: "Ok", comment: "ok Button Label")
+        let cancel = NSLocalizedString("cancelButton", value: "Cancel", comment: "cancel button label")
 
         let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { [weak self] (text) -> Void in
             Client.createWithName(text)
@@ -143,10 +157,10 @@ class ClientTableViewController: UITableViewController {
     
     func deleteAll(sender:UIBarButtonItem) {
         
-        let title = NSLocalizedString("titleDeleteAllClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Delete all Clients", comment: "titel in alert view controller")
-        let message = NSLocalizedString("messageDeleteAllClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Do you want to delete all Clients?", comment: "messager in alert view controller")
-        let ok = NSLocalizedString("okButtonDeleteAllClients", tableName: nil, bundle: NSBundle.mainBundle(), value: "Yes, delete all Clients", comment: "delete all clients ok Button Label")
-        let cancel = NSLocalizedString("cancelButtonDeleteAllClients", tableName: nil, bundle: NSBundle.mainBundle(), value: "Cancel", comment: "cancel button label")
+        let title = NSLocalizedString("titleDeleteAllClientDialog", value: "Delete all Clients", comment: "titel in alert view controller")
+        let message = NSLocalizedString("messageDeleteAllClientDialog", value: "Do you want to delete all Clients?", comment: "messager in alert view controller")
+        let ok = NSLocalizedString("okButtonDeleteAllClients", value: "Yes, delete all Clients", comment: "delete all clients ok Button Label")
+        let cancel = NSLocalizedString("cancelButtonDeleteAllClients", value: "Cancel", comment: "cancel button label")
         
         let dialog = bMHelper.dialogWithTitle(title, message: message, ok: ok, cancel: cancel) {
             Client.deleteAll()

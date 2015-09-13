@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3009B7EC1BA1665A00ECB719 /* ClientDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3009B7EB1BA1665900ECB719 /* ClientDetailController.swift */; };
+		3009B7EE1BA1667100ECB719 /* AssignmentDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3009B7ED1BA1667000ECB719 /* AssignmentDetailController.swift */; };
+		3009B7F41BA1777C00ECB719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B7F61BA1777C00ECB719 /* Localizable.strings */; };
+		3009B7F91BA1777C00ECB719 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B7FB1BA1777C00ECB719 /* InfoPlist.strings */; };
+		3009B7FE1BA1777D00ECB719 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B8001BA1777D00ECB719 /* InfoPlist.strings */; };
+		3009B8031BA1777D00ECB719 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B8051BA1777D00ECB719 /* InfoPlist.strings */; };
+		3009B8081BA1777E00ECB719 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B80A1BA1777E00ECB719 /* InfoPlist.strings */; };
+		3009B80B1BA1782900ECB719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B7F61BA1777C00ECB719 /* Localizable.strings */; };
 		3030232F1B99D4FE0089CA2B /* bMCheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3030232E1B99D4FE0089CA2B /* bMCheckCircle.swift */; };
 		303023301B99D4FE0089CA2B /* bMCheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3030232E1B99D4FE0089CA2B /* bMCheckCircle.swift */; };
 		303023331B99F5270089CA2B /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303023311B99F5270089CA2B /* ClientController.swift */; };
@@ -16,6 +24,7 @@
 		305563DB1B984B0E00695E46 /* AssignmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305563DA1B984B0E00695E46 /* AssignmentTableViewController.swift */; };
 		305563DF1B98589B00695E46 /* AssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305563DE1B98589B00695E46 /* AssignmentTableViewCell.swift */; };
 		305563E11B985D5900695E46 /* Assignment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305563E01B985D5900695E46 /* Assignment+Extension.swift */; };
+		305A0C991BA1FE9C00A1027A /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A0C981BA1FE9C00A1027A /* StartTabBarViewController.swift */; };
 		305DB91D1B91FF4000F2E6A2 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305DB91C1B91FF4000F2E6A2 /* Assignment.swift */; };
 		305DB91E1B91FF4000F2E6A2 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305DB91C1B91FF4000F2E6A2 /* Assignment.swift */; };
 		305DB9201B91FF4000F2E6A2 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305DB91F1B91FF4000F2E6A2 /* Client.swift */; };
@@ -88,6 +97,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3009B7EB1BA1665900ECB719 /* ClientDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientDetailController.swift; sourceTree = "<group>"; };
+		3009B7ED1BA1667000ECB719 /* AssignmentDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignmentDetailController.swift; sourceTree = "<group>"; };
+		3009B7EF1BA173BC00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		3009B7F01BA173BC00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		3009B7F11BA173BC00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
+		3009B7F51BA1777C00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3009B7FA1BA1777C00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3009B7FF1BA1777D00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3009B8041BA1777D00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3009B8091BA1777E00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3030232E1B99D4FE0089CA2B /* bMCheckCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bMCheckCircle.swift; sourceTree = "<group>"; };
 		303023311B99F5270089CA2B /* ClientController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
 		303023341B99F5B80089CA2B /* ClientRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientRow.swift; sourceTree = "<group>"; };
@@ -95,6 +114,7 @@
 		305563DA1B984B0E00695E46 /* AssignmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewController.swift; sourceTree = "<group>"; };
 		305563DE1B98589B00695E46 /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		305563E01B985D5900695E46 /* Assignment+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assignment+Extension.swift"; sourceTree = "<group>"; };
+		305A0C981BA1FE9C00A1027A /* StartTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTabBarViewController.swift; sourceTree = "<group>"; };
 		305DB91C1B91FF4000F2E6A2 /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 		305DB91F1B91FF4000F2E6A2 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		305DB9221B91FF4000F2E6A2 /* CommandTunnel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandTunnel.swift; sourceTree = "<group>"; };
@@ -206,6 +226,8 @@
 		30727E4F1B8CE47900F76520 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3009B8051BA1777D00ECB719 /* InfoPlist.strings */,
+				3009B7F61BA1777C00ECB719 /* Localizable.strings */,
 				30727E501B8CE47900F76520 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -223,6 +245,7 @@
 		30727E681B8CE47900F76520 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3009B80A1BA1777E00ECB719 /* InfoPlist.strings */,
 				30727E691B8CE47900F76520 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -234,6 +257,8 @@
 				30C9AC081B8CEC2B00804FDB /* workTrackR WatchKit Extension.entitlements */,
 				303023311B99F5270089CA2B /* ClientController.swift */,
 				303023341B99F5B80089CA2B /* ClientRow.swift */,
+				3009B7EB1BA1665900ECB719 /* ClientDetailController.swift */,
+				3009B7ED1BA1667000ECB719 /* AssignmentDetailController.swift */,
 				306FE9A21B9D742F00420B6D /* AssignmentController.swift */,
 				306FE9A41B9D745800420B6D /* AssignmentRow.swift */,
 				30727E7E1B8CE50400F76520 /* Images.xcassets */,
@@ -245,6 +270,7 @@
 		30727E7A1B8CE50400F76520 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3009B7FB1BA1777C00ECB719 /* InfoPlist.strings */,
 				30727E7B1B8CE50400F76520 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -263,6 +289,7 @@
 		30727E871B8CE50400F76520 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3009B8001BA1777D00ECB719 /* InfoPlist.strings */,
 				30727E881B8CE50400F76520 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -279,6 +306,7 @@
 				305DB91C1B91FF4000F2E6A2 /* Assignment.swift */,
 				305563E01B985D5900695E46 /* Assignment+Extension.swift */,
 				30C9AC0A1B8CEEAA00804FDB /* Common.swift */,
+				305A0C981BA1FE9C00A1027A /* StartTabBarViewController.swift */,
 				307137531B8F96A6003726DB /* CoreData.swift */,
 				3030232E1B99D4FE0089CA2B /* bMCheckCircle.swift */,
 			);
@@ -421,8 +449,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				30727E5A1B8CE47900F76520 /* Main.storyboard in Resources */,
+				3009B7F41BA1777C00ECB719 /* Localizable.strings in Resources */,
 				30727E5F1B8CE47900F76520 /* LaunchScreen.xib in Resources */,
 				30727E5C1B8CE47900F76520 /* Images.xcassets in Resources */,
+				3009B8031BA1777D00ECB719 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3009B8081BA1777E00ECB719 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +469,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				30727E831B8CE50400F76520 /* workTrackR WatchKit App.app in Resources */,
+				3009B80B1BA1782900ECB719 /* Localizable.strings in Resources */,
+				3009B7F91BA1777C00ECB719 /* InfoPlist.strings in Resources */,
 				30727E7F1B8CE50400F76520 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30727E8B1B8CE50400F76520 /* Interface.storyboard in Resources */,
+				3009B7FE1BA1777D00ECB719 /* InfoPlist.strings in Resources */,
 				30727E8D1B8CE50400F76520 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +497,7 @@
 				3076BB001B9A1A99006DB27F /* CommandTunnel+Extension.swift in Sources */,
 				305DB9201B91FF4000F2E6A2 /* Client.swift in Sources */,
 				305563E11B985D5900695E46 /* Assignment+Extension.swift in Sources */,
+				305A0C991BA1FE9C00A1027A /* StartTabBarViewController.swift in Sources */,
 				30C9AC0B1B8CEEAA00804FDB /* Common.swift in Sources */,
 				3067D46A1B937E80000D9F1E /* bMHelper.swift in Sources */,
 				30727E521B8CE47900F76520 /* AppDelegate.swift in Sources */,
@@ -496,8 +531,10 @@
 				303023331B99F5270089CA2B /* ClientController.swift in Sources */,
 				303023301B99D4FE0089CA2B /* bMCheckCircle.swift in Sources */,
 				307137561B8F9AA8003726DB /* workTrackR.xcdatamodeld in Sources */,
+				3009B7EE1BA1667100ECB719 /* AssignmentDetailController.swift in Sources */,
 				3076BB011B9A1A99006DB27F /* CommandTunnel+Extension.swift in Sources */,
 				305DB9241B91FF4000F2E6A2 /* CommandTunnel.swift in Sources */,
+				3009B7EC1BA1665A00ECB719 /* ClientDetailController.swift in Sources */,
 				305DB9211B91FF4000F2E6A2 /* Client.swift in Sources */,
 				307137551B8F96A6003726DB /* CoreData.swift in Sources */,
 				305DB91E1B91FF4000F2E6A2 /* Assignment.swift in Sources */,
@@ -528,10 +565,51 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3009B7F61BA1777C00ECB719 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3009B7F51BA1777C00ECB719 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		3009B7FB1BA1777C00ECB719 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3009B7FA1BA1777C00ECB719 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3009B8001BA1777D00ECB719 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3009B7FF1BA1777D00ECB719 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3009B8051BA1777D00ECB719 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3009B8041BA1777D00ECB719 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3009B80A1BA1777E00ECB719 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3009B8091BA1777E00ECB719 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		30727E581B8CE47900F76520 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				30727E591B8CE47900F76520 /* Base */,
+				3009B7EF1BA173BC00ECB719 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -540,6 +618,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				30727E5E1B8CE47900F76520 /* Base */,
+				3009B7F01BA173BC00ECB719 /* de */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -548,6 +627,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				30727E8A1B8CE50400F76520 /* Base */,
+				3009B7F11BA173BC00ECB719 /* de */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";

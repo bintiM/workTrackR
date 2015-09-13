@@ -32,11 +32,11 @@ class ClientTableViewCell: UITableViewCell {
     
     func editClient(client:Client) {
         
-        let title = NSLocalizedString("titleEditClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Edit Client", comment: "titel in alert view controller")
-        let placeholder = NSLocalizedString("placeholderEditClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Client", comment: "placeholder for inputTextField in edit alert view controller")
-        let message = NSLocalizedString("messageEditClientDialog", tableName: nil, bundle: NSBundle.mainBundle(), value: "Change your Clientname", comment: "message in edit alert view controller")
-        let ok = NSLocalizedString("okButton", tableName: nil, bundle: NSBundle.mainBundle(), value: "Ok", comment: "ok Button Label")
-        let cancel = NSLocalizedString("cancelButton", tableName: nil, bundle: NSBundle.mainBundle(), value: "Cancel", comment: "cancel button label")
+        let title = NSLocalizedString("titleEditClientDialog", value: "Edit Client", comment: "titel in alert view controller")
+        let placeholder = NSLocalizedString("placeholderEditClientDialog", value: "Client", comment: "placeholder for inputTextField in edit alert view controller")
+        let message = NSLocalizedString("messageEditClientDialog", value: "Change your Clientname", comment: "message in edit alert view controller")
+        let ok = NSLocalizedString("okButton", value: "Ok", comment: "ok Button Label")
+        let cancel = NSLocalizedString("cancelButton", value: "Cancel", comment: "cancel button label")
         
         let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: client.name, ok: ok, cancel: cancel) { [weak self] (text) -> Void in
             

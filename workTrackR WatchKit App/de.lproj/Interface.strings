@@ -1,0 +1,27 @@
+/* Class = "WKInterfaceLabel"; text = "Client.name"; ObjectID = "0mK-Bb-JiQ"; */
+"0mK-Bb-JiQ.text" = "Client.name";
+
+/* Class = "WKInterfaceLabel"; text = "Quantity"; ObjectID = "5Wd-hp-vWQ"; */
+"5Wd-hp-vWQ.text" = "Quantity";
+
+/* Class = "WKInterfaceButton"; title = "detail"; ObjectID = "DrL-9v-6lV"; */
+"DrL-9v-6lV.title" = "detail";
+
+/* Class = "WKInterfaceLabel"; text = "Chart:"; ObjectID = "MX2-mS-Cit"; */
+"MX2-mS-Cit.text" = "Chart:";
+
+/* Class = "WKInterfaceLabel"; text = "# assignments"; ObjectID = "WlE-1E-RW7"; */
+"WlE-1E-RW7.text" = "# assignments";
+
+/* Class = "WKInterfaceLabel"; text = "Clientname:"; ObjectID = "jGW-Ry-oN9"; */
+"jGW-Ry-oN9.text" = "Clientname:";
+
+/* Class = "WKInterfaceLabel"; text = "Label"; ObjectID = "o00-PW-QvM"; */
+"o00-PW-QvM.text" = "Label";
+
+/* Class = "WKInterfaceLabel"; text = "Assignments:"; ObjectID = "p6g-ga-foN"; */
+"p6g-ga-foN.text" = "Assignments:";
+
+/* Class = "WKInterfaceLabel"; text = "client.name"; ObjectID = "vjx-J2-tfS"; */
+"vjx-J2-tfS.text" = "client.name";
+

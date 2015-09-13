@@ -33,7 +33,7 @@ class bMCheckCircle {
                 NSFontAttributeName : UIFont.boldSystemFontOfSize(radius * 1.7),
                 NSForegroundColorAttributeName : strokeColor
             ]
-            checkMark.drawAtPoint(CGPointMake(radius/5, -radius/6), withAttributes: fontAttributes)
+            checkMark.drawAtPoint(CGPointMake(radius/2, -radius/3), withAttributes: fontAttributes)
         }
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
