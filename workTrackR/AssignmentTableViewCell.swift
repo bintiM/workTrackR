@@ -16,9 +16,6 @@ class AssignmentTableViewCell: UITableViewCell {
             // nameButtonOutlet.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
             
             nameButtonOutlet.setTitle(assignment.desc, forState: .Normal)
-            let width = doneImageViewOutlet.bounds.size.width
-            let height = doneImageViewOutlet.bounds.size.height
-            doneImageViewOutlet.image = bMCheckCircle.checkCircle(assignment.running.boolValue, radius: width/2.0, lineWidth: 2.0)
             
             var dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "d.M. HH:mm:ss"
@@ -30,11 +27,17 @@ class AssignmentTableViewCell: UITableViewCell {
             }
             if assignment.end.timeIntervalSince1970.distanceTo(0.0) != 0.0 {
                 endDateLabelOutlet.text = dateFormatter.stringFromDate(assignment.end)
+                endButtonOutlet.enabled = false
             } else {
                 endDateLabelOutlet.text = "..."
             }
+            
 
-
+        }
+    }
+    @IBOutlet weak var endButtonOutlet: UIButton! {
+        didSet {
+            endButtonOutlet.setTitle("End", forState: .Normal)
         }
     }
     @IBOutlet weak var nameButtonOutlet: UIButton! {
@@ -52,6 +55,11 @@ class AssignmentTableViewCell: UITableViewCell {
     @IBOutlet weak var doneImageViewOutlet: UIImageView!
     @IBAction func nameButtonAction(sender: AnyObject) {
     }
+    
+    @IBAction func endButtonAction(sender: AnyObject) {
+        assignment.end = NSDate()
+        CoreData.sharedInstance.saveContext()
+    }
 
     func enableNameButton() {
         nameButtonOutlet.enabled = true
@@ -59,6 +67,15 @@ class AssignmentTableViewCell: UITableViewCell {
     
     func disableNameButton() {
         nameButtonOutlet.enabled = false
+    }
+    
+    func enableEndButton() {
+        nameButtonOutlet.enabled = true
+    }
+    
+    func disableEndButton() {
+        nameButtonOutlet.enabled = false
+        // test
     }
     
     

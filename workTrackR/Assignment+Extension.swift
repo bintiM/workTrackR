@@ -11,32 +11,38 @@ import CoreData
 
 extension Assignment {
 
-    /*
+    
     static func createAssignmentForClient (client:Client, withDescription description:String) -> Assignment {
         let assignment = NSEntityDescription.insertNewObjectForEntityForName(kAssignmentEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Assignment
         assignment.client = client
         assignment.desc = description
         CoreData.sharedInstance.saveContext()
         return assignment
-    }*/
+    }
 
     static func createAssignmentForClientNow (client:Client, withDescription description:String) -> Assignment {
         
-        endPreviousAssignmentForClient(client)
+        let existingClient = CoreData.managedObjectByURI(client.objectID.URIRepresentation()) as? Client
+        
+        endPreviousAssignmentForClient(existingClient!)
         
         let assignment = NSEntityDescription.insertNewObjectForEntityForName(kAssignmentEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Assignment
-        assignment.client = client
+        
+        assignment.client = existingClient!
         assignment.desc = description
         assignment.begin = NSDate()
-        
         CoreData.sharedInstance.saveContext()
+        
         
         return assignment
     }
 
     static func createAssignmentForClientWithDate (client:Client, withDescription description:String, begins beginDate:NSDate, ends endDate:NSDate) -> Assignment {
+        
+        let existingClient = CoreData.managedObjectByURI(client.objectID.URIRepresentation()) as? Client
+        
         let assignment = NSEntityDescription.insertNewObjectForEntityForName(kAssignmentEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Assignment
-        assignment.client = client
+        assignment.client = existingClient!
         assignment.desc = description
         assignment.begin = beginDate
         assignment.end = endDate

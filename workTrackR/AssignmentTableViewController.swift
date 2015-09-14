@@ -133,6 +133,7 @@ class AssignmentTableViewController: UITableViewController {
         let cancel = NSLocalizedString("cancelButton", value: "Cancel", comment: "cancel button label")
         
         let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { [weak self] (text) -> Void in
+            
             Assignment.createAssignmentForClientNow(self!.client, withDescription: text)
         }
         
