@@ -78,6 +78,8 @@ class AssignmentTableViewController: UITableViewController {
         
         navigationItem.setRightBarButtonItems([addButton, deleteAllButton], animated: true)
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite]
+        
         // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
@@ -114,6 +116,17 @@ class AssignmentTableViewController: UITableViewController {
 
     }
     
+    //MARK: - Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == kDetailViewController {
+            if let indexPath = tableView.indexPathForSelectedRow(), assignment = fetchedResultsController.objectAtIndexPath(indexPath) as? Assignment {
+                if let controller = segue.destinationViewController as? DetailViewController {
+                    controller.assignment = assignment
+                }
+            }
+        }
+    }
+
     
     func checkCommand() {
         if CommandTunnel.wasCommandAvailable(kChangedData) {
@@ -182,12 +195,12 @@ class AssignmentTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
         if let assignmentCell = tableView.cellForRowAtIndexPath(indexPath) as? AssignmentTableViewCell {
-            assignmentCell.disableNameButton()
+            assignmentCell.disableEndButton()
         }
     }
     override func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
         if let assignmentCell = tableView.cellForRowAtIndexPath(indexPath) as? AssignmentTableViewCell {
-            assignmentCell.enableNameButton()
+            assignmentCell.enableEndButton()
         }
     }
     

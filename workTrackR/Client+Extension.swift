@@ -23,8 +23,9 @@ extension Client {
         let assignmentNameFormat = NSLocalizedString("AutoCreatedFirstAssignment", value: "first Assignment for %@", comment: "Autogenereated first task")
         let assignmentName = String(format: assignmentNameFormat, client.name)
         
-        Assignment.createAssignmentForClientNow(client, withDescription: assignmentName) // save context ist im createAssignment
-        
+        // Assignment.createAssignmentForClientNow(client, withDescription: assignmentName) // save context ist im createAssignment
+        CoreData.sharedInstance.saveContext()
+
         return client
     }
     

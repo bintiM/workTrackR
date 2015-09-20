@@ -13,9 +13,17 @@ class AssignmentTableViewCell: UITableViewCell {
     
     var assignment:Assignment! {
         didSet {
-            // nameButtonOutlet.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+           
+            UIView.appearance().backgroundColor = kColorDarkGreen
+            beginDateLabelOutlet.font = kFontThinSmall
+            beginDateLabelOutlet.textColor = kColorWhite
+            endDateLabelOutlet.font = kFontThinSmall
+            endDateLabelOutlet.textColor = kColorWhite
+            assignmentDescLabelOutlet.font = kFontThin
+            assignmentDescLabelOutlet.textColor = kColorWhite
+
             
-            nameButtonOutlet.setTitle(assignment.desc, forState: .Normal)
+            assignmentDescLabelOutlet.text = assignment.desc
             
             var dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "d.M. HH:mm:ss"
@@ -30,6 +38,7 @@ class AssignmentTableViewCell: UITableViewCell {
                 endButtonOutlet.enabled = false
             } else {
                 endDateLabelOutlet.text = "..."
+                endButtonOutlet.enabled = true
             }
             
 
@@ -40,6 +49,7 @@ class AssignmentTableViewCell: UITableViewCell {
             endButtonOutlet.setTitle("End", forState: .Normal)
         }
     }
+/*
     @IBOutlet weak var nameButtonOutlet: UIButton! {
         didSet {
             nameButtonOutlet.layer.cornerRadius = 6.0
@@ -49,7 +59,8 @@ class AssignmentTableViewCell: UITableViewCell {
             nameButtonOutlet.layer.backgroundColor = UIColor(white: 1.0, alpha: 1.0).CGColor
         }
     }
-
+*/
+    @IBOutlet weak var assignmentDescLabelOutlet: UILabel!
     @IBOutlet weak var beginDateLabelOutlet: UILabel!
     @IBOutlet weak var endDateLabelOutlet: UILabel!
     @IBOutlet weak var doneImageViewOutlet: UIImageView!
@@ -61,22 +72,12 @@ class AssignmentTableViewCell: UITableViewCell {
         CoreData.sharedInstance.saveContext()
     }
 
-    func enableNameButton() {
-        nameButtonOutlet.enabled = true
-    }
-    
-    func disableNameButton() {
-        nameButtonOutlet.enabled = false
-    }
-    
     func enableEndButton() {
-        nameButtonOutlet.enabled = true
+        endButtonOutlet.enabled = true
     }
     
     func disableEndButton() {
-        nameButtonOutlet.enabled = false
-        // test
+        endButtonOutlet.enabled = false
     }
-    
     
 }

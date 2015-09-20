@@ -15,6 +15,7 @@
 		3009B8031BA1777D00ECB719 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B8051BA1777D00ECB719 /* InfoPlist.strings */; };
 		3009B8081BA1777E00ECB719 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B80A1BA1777E00ECB719 /* InfoPlist.strings */; };
 		3009B80B1BA1782900ECB719 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3009B7F61BA1777C00ECB719 /* Localizable.strings */; };
+		3019BACD1BA6F4A400F57405 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3019BACC1BA6F4A400F57405 /* DetailViewController.swift */; };
 		3030232F1B99D4FE0089CA2B /* bMCheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3030232E1B99D4FE0089CA2B /* bMCheckCircle.swift */; };
 		303023301B99D4FE0089CA2B /* bMCheckCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3030232E1B99D4FE0089CA2B /* bMCheckCircle.swift */; };
 		303023331B99F5270089CA2B /* ClientController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303023311B99F5270089CA2B /* ClientController.swift */; };
@@ -107,6 +108,7 @@
 		3009B7FF1BA1777D00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3009B8041BA1777D00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3009B8091BA1777E00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3019BACC1BA6F4A400F57405 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3030232E1B99D4FE0089CA2B /* bMCheckCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bMCheckCircle.swift; sourceTree = "<group>"; };
 		303023311B99F5270089CA2B /* ClientController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientController.swift; sourceTree = "<group>"; };
 		303023341B99F5B80089CA2B /* ClientRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientRow.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				305DB9251B92029D00F2E6A2 /* ClientTableViewController.swift */,
 				305DB9271B92030400F2E6A2 /* ClientTableViewCell.swift */,
 				305563DA1B984B0E00695E46 /* AssignmentTableViewController.swift */,
+				3019BACC1BA6F4A400F57405 /* DetailViewController.swift */,
 				305563DE1B98589B00695E46 /* AssignmentTableViewCell.swift */,
 				30727E5B1B8CE47900F76520 /* Images.xcassets */,
 				30727E5D1B8CE47900F76520 /* LaunchScreen.xib */,
@@ -505,6 +508,7 @@
 				3067D46A1B937E80000D9F1E /* bMHelper.swift in Sources */,
 				30727E521B8CE47900F76520 /* AppDelegate.swift in Sources */,
 				3067D46C1B93897A000D9F1E /* UIView+Extension.swift in Sources */,
+				3019BACD1BA6F4A400F57405 /* DetailViewController.swift in Sources */,
 				305DB9231B91FF4000F2E6A2 /* CommandTunnel.swift in Sources */,
 				303749C81B933F8D00983872 /* Client+Extension.swift in Sources */,
 				30727E551B8CE47900F76520 /* workTrackR.xcdatamodeld in Sources */,
@@ -730,6 +734,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -744,6 +749,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -61,34 +61,20 @@ class ClientTableViewController: UITableViewController {
         return fetchedResultsController
     } ()
 
-/* statt lazy var
-    private var _fetchedResultsController:NSFetchedResultsController!
-    private var fetchedResultsController:NSFetchedResultsController! {
-        if _fetchedResultsController != nil {
-            return _fetchedResultsController
-        }
-        
-        let request = NSFetchRequest(entityName: kClient)
-        request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: true)]
-        
-        _fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-        _fetchedResultsController.delegate = self
-        _fetchedResultsController.performFetch(nil)
-        return _fetchedResultsController
-    }
-*/
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
+        self.title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClient:")
         let editButton = UIBarButtonItem(barButtonSystemItem: .Organize, target: editButtonItem().target, action: editButtonItem().action)
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
         navigationItem.setRightBarButtonItems([addButton, editButton, deleteAllButton], animated: true)
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite]
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
+
     }
     
     override func viewWillAppear(animated: Bool) {

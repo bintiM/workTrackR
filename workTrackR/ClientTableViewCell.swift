@@ -12,8 +12,10 @@ class ClientTableViewCell: UITableViewCell {
 
     var client:Client! {
         didSet {
-            nameButtonOutlet.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-            nameButtonOutlet.setTitle(client.name + " order:\(client.order)", forState: .Normal)
+            UIView.appearance().backgroundColor = kColorDarkGreen
+            //nameButtonOutlet.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+            nameButtonOutlet.titleLabel?.font = kFontThin
+            nameButtonOutlet.setTitle(client.name, forState: .Normal)
         }
     }
     
@@ -22,7 +24,7 @@ class ClientTableViewCell: UITableViewCell {
             nameButtonOutlet.layer.cornerRadius = 6.0
             nameButtonOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
             nameButtonOutlet.layer.borderWidth = 1.0
-            nameButtonOutlet.layer.backgroundColor = UIColor(white: 0.95, alpha: 1.0).CGColor
+            nameButtonOutlet.layer.backgroundColor = kColorDarkGreen.CGColor
         }
     }
     @IBOutlet weak var doneCircleImageViewOutlet: UIImageView!
