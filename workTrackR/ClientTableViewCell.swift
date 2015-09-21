@@ -12,7 +12,7 @@ class ClientTableViewCell: UITableViewCell {
 
     var client:Client! {
         didSet {
-            UIView.appearance().backgroundColor = kColorDarkGreen
+
             //nameButtonOutlet.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
             nameButtonOutlet.titleLabel?.font = kFontThin
             nameButtonOutlet.setTitle(client.name, forState: .Normal)

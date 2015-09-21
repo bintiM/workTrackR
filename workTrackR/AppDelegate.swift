@@ -17,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        UITableView.appearance().backgroundColor = kColorDarkGreen
-        UINavigationBar.appearance().barTintColor = kColorDarkGreen
+        // UITableView.appearance().backgroundColor = kColorDarkGreen
+//        UINavigationBar.appearance().barTintColor = kColorDarkGreen
+        UINavigationBar.appearance().barStyle = UIBarStyle.Black
+        UINavigationBar.appearance().translucent = true
         UIView.appearance().tintColor = kColorWhite
+        // UIView.appearance().backgroundColor = kColorDarkGreen
         
         
         return true

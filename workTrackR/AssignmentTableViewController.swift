@@ -72,13 +72,14 @@ class AssignmentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = kColorDarkGreen
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addAssignment:")
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
         navigationItem.setRightBarButtonItems([addButton, deleteAllButton], animated: true)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite, NSBackgroundColorAttributeName: kColorDarkGreen]
         
         // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -182,6 +183,7 @@ class AssignmentTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kAssignmentTableViewCell, forIndexPath: indexPath) as! AssignmentTableViewCell
         
+        cell.backgroundColor = kColorDarkGreen
         cell.assignment = fetchedResultsController.objectAtIndexPath(indexPath) as! Assignment
         
         return cell

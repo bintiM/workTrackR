@@ -64,15 +64,16 @@ class ClientTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = kColorDarkGreen
+        
         self.title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClient:")
         let editButton = UIBarButtonItem(barButtonSystemItem: .Organize, target: editButtonItem().target, action: editButtonItem().action)
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
         navigationItem.setRightBarButtonItems([addButton, editButton, deleteAllButton], animated: true)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite]
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite, NSBackgroundColorAttributeName: kColorDarkGreen]
+
         tableView.tableFooterView = UIView(frame: CGRectZero)
 
     }
@@ -131,10 +132,6 @@ class ClientTableViewController: UITableViewController {
         let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { [weak self] (text) -> Void in
             Client.createWithName(text)
             
-            /* let insertClient popup again
-            bMHelper.delayOnMainQueue(0.3) { () -> Void in
-                self?.addClient(sender)
-            }*/
         }
 
         presentViewController(dialog, animated: true, completion: nil)
@@ -169,6 +166,12 @@ class ClientTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kClientTableViewCell, forIndexPath: indexPath) as! ClientTableViewCell
+
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = kColorDarkGreen
+        } else {
+            cell.backgroundColor = kColorDarkGreenAlt
+        }
         
         cell.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
         

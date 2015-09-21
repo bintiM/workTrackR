@@ -37,7 +37,58 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        self.view.backgroundColor = kColorDarkGreen
+        
+        descLabelOutlet.font = kFontThin
+        descLabelOutlet.textColor = kColorWhite
+        
+        beginDateTextFieldOutlet.font = kFontThin
+        beginDateTextFieldOutlet.textColor = kColorWhite
+        beginDateTextFieldOutlet.backgroundColor = kColorDarkGreen
+        beginDateTextFieldOutlet.layer.borderColor = kColorWhite.CGColor
+        beginDateTextFieldOutlet.layer.borderWidth = 1.0
+        
+        endDateTextFieldOutlet.font = kFontThin
+        endDateTextFieldOutlet.textColor = kColorWhite
+        endDateTextFieldOutlet.backgroundColor = kColorDarkGreen
+        endDateTextFieldOutlet.layer.borderColor = kColorWhite.CGColor
+        endDateTextFieldOutlet.layer.borderWidth = 1.0
+        
+        durationLabelOutlet.font = kFontThin
+        durationLabelOutlet.textColor = kColorWhite
+        
+        descTextFieldOutlet.textColor = kColorWhite
+        descTextFieldOutlet.font = kFontThin
+        descTextFieldOutlet.backgroundColor = kColorDarkGreen
+        descTextFieldOutlet.layer.borderColor = kColorWhite.CGColor
+        descTextFieldOutlet.layer.borderWidth = 1.0
+        
+        beginDateLabelOulet.font = kFontThin
+        beginDateLabelOulet.textColor = kColorWhite
+        
+        endDateLabelOutlet.font = kFontThin
+        endDateLabelOutlet.textColor = kColorWhite
+        
+        didNotEndLabelOutlet.font = kFontThin
+        didNotEndLabelOutlet.textColor = kColorWhite
+        
+        switchEndDatePickerOutlet.onTintColor = kColorGreen
+        switchEndDatePickerOutlet.tintColor = kColorWhite
+        
+        
+        beginDatePickerView.backgroundColor = kColorDarkGreen
+        beginDatePickerView.tintColor = kColorWhite
+        
+        // beginDatePickerView.setValue(kColorWhite, forKeyPath: "textColor")
+        // beginDatePickerView.setValue(1.0, forKeyPath: "alpha")
+
+        endDatePickerView.backgroundColor = kColorDarkGreen
+        endDatePickerView.tintColor = kColorWhite
+
+        // endDatePickerView.setValue(kColorWhite, forKeyPath: "textColor")
+        // endDatePickerView.setValue(1.0, forKeyPath: "alpha")
+
+        
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         

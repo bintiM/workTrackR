@@ -14,7 +14,7 @@ class AssignmentTableViewCell: UITableViewCell {
     var assignment:Assignment! {
         didSet {
            
-            UIView.appearance().backgroundColor = kColorDarkGreen
+            // UIView.appearance().backgroundColor = kColorDarkGreen
             beginDateLabelOutlet.font = kFontThinSmall
             beginDateLabelOutlet.textColor = kColorWhite
             endDateLabelOutlet.font = kFontThinSmall
