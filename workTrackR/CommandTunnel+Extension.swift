@@ -13,7 +13,7 @@ extension CommandTunnel {
     
     static func deleteAllCommands() {
         let request = NSFetchRequest(entityName: kCommandTunnelEntity)
-        if let allCommands = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [CommandTunnel] {
+        if let allCommands = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [CommandTunnel] {
             for command in allCommands {
                 CoreData.sharedInstance.managedObjectContext?.deleteObject(command)
             }
@@ -30,7 +30,7 @@ extension CommandTunnel {
     
     static func wasCommandAvailable(command:String) -> Bool {
         let request = NSFetchRequest(entityName: kCommandTunnelEntity)
-        if let allCommands = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [CommandTunnel] {
+        if let allCommands = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [CommandTunnel] {
             for actCommand in allCommands {
                 if actCommand.command == command {
                     CoreData.sharedInstance.managedObjectContext?.deleteObject(actCommand)

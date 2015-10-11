@@ -1,124 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B66-PN-YBe">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RvC-ae-Gi4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
     </dependencies>
     <scenes>
-        <!--ClientController-->
-        <scene sceneID="gtV-s7-f7C">
+        <!--Interface Controller-->
+        <scene sceneID="Zqf-1V-WDh">
             <objects>
-                <controller identifier="ClientController" id="B66-PN-YBe" customClass="ClientController" customModule="workTrackR_WatchKit_Extension">
+                <controller hidesWhenLoading="NO" id="RvC-ae-Gi4" customClass="InterfaceController" customModule="workTrackR_WatchKit_Extension">
                     <items>
-                        <table alignment="left" id="ne7-qg-5Ex">
-                            <items>
-                                <tableRow identifier="ClientRow" id="qgV-I5-UKC" customClass="ClientRow" customModule="workTrackR_WatchKit_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="3Qx-xx-2zJ">
-                                        <items>
-                                            <label height="20" alignment="left" verticalAlignment="center" text="Client.name" id="0mK-Bb-JiQ"/>
-                                            <button width="30" height="30" alignment="right" verticalAlignment="center" title="detail" id="DrL-9v-6lV">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <connections>
-                                                    <segue destination="3rW-H5-KYj" kind="push" identifier="AssignmentController" id="zlE-di-ODv"/>
-                                                </connections>
-                                            </button>
-                                        </items>
-                                    </group>
-                                    <connections>
-                                        <outlet property="nameLabelOutlet" destination="0mK-Bb-JiQ" id="78C-S1-zZE"/>
-                                        <segue destination="2BX-5Z-1dE" kind="push" identifier="ClientDetailController" id="ez3-Cs-Y7x"/>
-                                    </connections>
-                                </tableRow>
-                            </items>
-                        </table>
-                    </items>
-                    <connections>
-                        <outlet property="tableOutlet" destination="ne7-qg-5Ex" id="eMw-j6-0OF"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="-190" y="425"/>
-        </scene>
-        <!--ClientDetailController-->
-        <scene sceneID="Xo1-LB-z2a">
-            <objects>
-                <controller identifier="ClientDetailController" id="2BX-5Z-1dE" customClass="ClientDetailController" customModule="workTrackR_WatchKit_Extension">
-                    <items>
-                        <label width="1" alignment="left" text="Clientname:" textAlignment="center" id="jGW-Ry-oN9"/>
-                        <label width="1" alignment="left" text="client.name" numberOfLines="0" id="vjx-J2-tfS"/>
-                        <separator alignment="left" id="NtA-Ae-9h2"/>
-                        <label width="1" alignment="left" text="Assignments:" textAlignment="center" id="p6g-ga-foN"/>
-                        <group width="1" alignment="left" id="wlO-9Y-b5J">
-                            <items>
-                                <label alignment="left" text="Quantity" id="5Wd-hp-vWQ"/>
-                                <label alignment="right" text="# assignments" textAlignment="right" id="WlE-1E-RW7"/>
-                            </items>
-                        </group>
-                        <separator alignment="left" id="4wZ-zk-6VH"/>
-                        <label width="1" alignment="left" text="Chart:" textAlignment="center" numberOfLines="0" id="MX2-mS-Cit"/>
-                        <button width="1" height="100" alignment="left" id="8xs-3o-di0">
-                            <variation key="device=watch38mm" height="136"/>
-                            <variation key="device=watch42mm" height="156"/>
+                        <label alignment="left" text="ActStatus" id="jOZ-CE-sRj"/>
+                        <button width="1" alignment="left" title="endAssignment" id="uD5-Ib-BhJ">
                             <connections>
-                                <segue destination="3rW-H5-KYj" kind="push" id="aPs-gP-61I"/>
+                                <action selector="endAssignmentAction" destination="RvC-ae-Gi4" id="ERr-zX-Nzh"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="startAssignment" id="RY0-67-TB5">
+                            <connections>
+                                <action selector="startAssignmentAction" destination="RvC-ae-Gi4" id="Y3i-Nf-3tL"/>
                             </connections>
                         </button>
                     </items>
                     <connections>
-                        <outlet property="assignmentTitleLabelOutlet" destination="p6g-ga-foN" id="YcV-sE-Wpd"/>
-                        <outlet property="clientNameLabelOutlet" destination="vjx-J2-tfS" id="0Ns-DY-fTX"/>
-                        <outlet property="clientTitleLabelOutlet" destination="jGW-Ry-oN9" id="YLM-mP-3ir"/>
-                        <outlet property="quantityLabelOutlet" destination="5Wd-hp-vWQ" id="BrA-Zl-hTm"/>
-                        <outlet property="quantityValueLabelOutlet" destination="WlE-1E-RW7" id="kWr-tA-356"/>
+                        <outlet property="endAssignmentButtonOutlet" destination="uD5-Ib-BhJ" id="Ya1-hx-AXG"/>
+                        <outlet property="startAssignmentButtonOutlet" destination="RY0-67-TB5" id="C7z-eU-lfe"/>
+                        <outlet property="statusLabelOutlet" destination="jOZ-CE-sRj" id="LCG-Ce-GcE"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="-190" y="714"/>
-        </scene>
-        <!--AssignmentController-->
-        <scene sceneID="YZY-pd-6Wu">
-            <objects>
-                <controller identifier="AssignmentController" id="3rW-H5-KYj" customClass="AssignmentController" customModule="workTrackR_WatchKit_Extension">
-                    <items>
-                        <table alignment="left" id="yHV-Gy-0yb">
-                            <items>
-                                <tableRow identifier="AssignmentRow" id="LQZ-ZB-WT5" customClass="AssignmentRow" customModule="workTrackR_WatchKit_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="SXW-Lu-Sbx">
-                                        <items>
-                                            <label height="20" alignment="left" verticalAlignment="center" text="Label" id="o00-PW-QvM"/>
-                                            <button width="30" height="30" alignment="right" verticalAlignment="center" id="vXL-Fy-aJi">
-                                                <connections>
-                                                    <action selector="doneButtonAction" destination="LQZ-ZB-WT5" id="VnW-pl-QLJ"/>
-                                                </connections>
-                                            </button>
-                                        </items>
-                                    </group>
-                                    <connections>
-                                        <outlet property="doneButtonOutlet" destination="vXL-Fy-aJi" id="u6p-bj-r3c"/>
-                                        <outlet property="nameLabelOutlet" destination="o00-PW-QvM" id="vCp-Xc-nWd"/>
-                                        <segue destination="cdM-pl-y4L" kind="push" identifier="AssignmentDetailController" id="hlD-gb-82P"/>
-                                    </connections>
-                                </tableRow>
-                            </items>
-                        </table>
-                    </items>
-                    <connections>
-                        <outlet property="tableOutlet" destination="yHV-Gy-0yb" id="WC6-MF-COn"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="153" y="429"/>
-        </scene>
-        <!--AssignmentDetailController-->
-        <scene sceneID="2ZY-WC-yIg">
-            <objects>
-                <controller identifier="AssignmentDetailController" id="cdM-pl-y4L" customClass="AssignmentDetailController" customModule="workTrackR_WatchKit_Extension"/>
-            </objects>
-            <point key="canvasLocation" x="153" y="714"/>
+            <point key="canvasLocation" x="-97" y="434"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="aPs-gP-61I"/>
-    </inferredMetricsTieBreakers>
 </document>

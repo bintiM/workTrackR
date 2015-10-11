@@ -54,6 +54,8 @@ class AssignmentTableViewController: UITableViewController {
     private var updateTimer:NSTimer!
     private var commandTunnelTimer:NSTimer!
     
+    var connectivityHandler : ConnectivityHandler!
+    
     var client:Client! {
         didSet {
             title = client.name
@@ -66,12 +68,20 @@ class AssignmentTableViewController: UITableViewController {
         request.predicate = NSPredicate(format: "client == %@", self.client)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        fetchedResultsController.performFetch(nil)
+        do {
+            try fetchedResultsController.performFetch()
+        } catch _ {
+        }
         return fetchedResultsController
         } ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.connectivityHandler = (UIApplication.sharedApplication().delegate as? AppDelegate)?.connectivityHandler
+        self.connectivityHandler?.addObserver(self, forKeyPath: "messages", options: NSKeyValueObservingOptions(), context: nil)
+
+        
         self.view.backgroundColor = kColorDarkGreen
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addAssignment:")
@@ -79,7 +89,7 @@ class AssignmentTableViewController: UITableViewController {
         
         navigationItem.setRightBarButtonItems([addButton, deleteAllButton], animated: true)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite, NSBackgroundColorAttributeName: kColorDarkGreen]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
         
         // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -120,7 +130,7 @@ class AssignmentTableViewController: UITableViewController {
     //MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kDetailViewController {
-            if let indexPath = tableView.indexPathForSelectedRow(), assignment = fetchedResultsController.objectAtIndexPath(indexPath) as? Assignment {
+            if let indexPath = tableView.indexPathForSelectedRow, assignment = fetchedResultsController.objectAtIndexPath(indexPath) as? Assignment {
                 if let controller = segue.destinationViewController as? DetailViewController {
                     controller.assignment = assignment
                 }
@@ -149,6 +159,7 @@ class AssignmentTableViewController: UITableViewController {
         let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { [weak self] (text) -> Void in
             
             Assignment.createAssignmentForClientNow(self!.client, withDescription: text)
+            try! self!.connectivityHandler.session.updateApplicationContext(["msg" : "\(text) started", "running" : true])
         }
         
         presentViewController(dialog, animated: true, completion: nil)
@@ -177,7 +188,9 @@ class AssignmentTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo)?.numberOfObjects ?? 0
+        let sections = fetchedResultsController.sections?[section]
+        return sections?.numberOfObjects ?? 0
+//        return (fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo)?.numberOfObjects ?? 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -60,9 +60,9 @@ class ClientController: WKInterfaceController {
     func reloadData() {
         let request = NSFetchRequest(entityName: kClient)
         request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: true)]
-        if let allClients = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [Client] {
+        if let allClients = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [Client] {
             tableOutlet.setNumberOfRows(allClients.count, withRowType: kClientRow)
-            for (index, client) in enumerate(allClients) {
+            for (index, client) in allClients.enumerate() {
                 if let clientRow = tableOutlet.rowControllerAtIndex(index) as? ClientRow {
                     clientRow.client = client
                 }

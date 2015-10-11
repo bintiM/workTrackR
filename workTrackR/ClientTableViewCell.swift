@@ -14,20 +14,25 @@ class ClientTableViewCell: UITableViewCell {
         didSet {
 
             //nameButtonOutlet.titleLabel?.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-            nameButtonOutlet.titleLabel?.font = kFontThin
-            nameButtonOutlet.setTitle(client.name, forState: .Normal)
+            //nameButtonOutlet.titleLabel?.font = kFontThin
+            // nameButtonOutlet.setTitle(client.name, forState: .Normal)
+
+                       
+            clientNameLabelOutlet.text = client.name
         }
     }
     
     @IBOutlet weak var nameButtonOutlet: UIButton! {
         didSet {
-            nameButtonOutlet.layer.cornerRadius = 6.0
-            nameButtonOutlet.layer.borderColor = UIColor.lightGrayColor().CGColor
+            nameButtonOutlet.layer.cornerRadius = 10.0
+            nameButtonOutlet.layer.borderColor = kColorStandard.CGColor
             nameButtonOutlet.layer.borderWidth = 1.0
             nameButtonOutlet.layer.backgroundColor = kColorDarkGreen.CGColor
+            nameButtonOutlet.setTitle("i", forState: .Normal)
         }
     }
-    @IBOutlet weak var doneCircleImageViewOutlet: UIImageView!
+    @IBOutlet weak var clientNameLabelOutlet: UILabel!
+    
     @IBAction func nameButtonAction(sender: AnyObject) {
         editClient(client)
     }

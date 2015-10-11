@@ -57,7 +57,10 @@ class ClientTableViewController: UITableViewController {
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
-        fetchedResultsController.performFetch(nil)
+        do {
+            try fetchedResultsController.performFetch()
+        } catch _ {
+        }
         return fetchedResultsController
     } ()
 
@@ -72,7 +75,7 @@ class ClientTableViewController: UITableViewController {
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
         navigationItem.setRightBarButtonItems([addButton, editButton, deleteAllButton], animated: true)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin!, NSForegroundColorAttributeName: kColorWhite, NSBackgroundColorAttributeName: kColorDarkGreen]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
 
         tableView.tableFooterView = UIView(frame: CGRectZero)
 
@@ -112,7 +115,7 @@ class ClientTableViewController: UITableViewController {
     //MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == kAssignmentTableViewController {
-            if let indexPath = tableView.indexPathForSelectedRow(), client = fetchedResultsController.objectAtIndexPath(indexPath) as? Client {
+            if let indexPath = tableView.indexPathForSelectedRow, client = fetchedResultsController.objectAtIndexPath(indexPath) as? Client {
                 if let controller = segue.destinationViewController as? AssignmentTableViewController {
                     controller.client = client
                 }
@@ -129,10 +132,14 @@ class ClientTableViewController: UITableViewController {
         let ok = NSLocalizedString("okButton", value: "Ok", comment: "ok Button Label")
         let cancel = NSLocalizedString("cancelButton", value: "Cancel", comment: "cancel button label")
 
-        let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { [weak self] (text) -> Void in
+        
+        let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { (text) -> Void in
             Client.createWithName(text)
             
         }
+
+        
+        
 
         presentViewController(dialog, animated: true, completion: nil)
     }
@@ -161,7 +168,9 @@ class ClientTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo)?.numberOfObjects ?? 0
+        let numberSectionsInfo:NSFetchedResultsSectionInfo? = fetchedResultsController.sections?[section]
+        return numberSectionsInfo?.numberOfObjects ?? 0
+        // return (fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo)?.numberOfObjects ?? 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -73,9 +73,9 @@ class AssignmentController: WKInterfaceController {
         request.predicate = NSPredicate(format: "client == %@", self.client)
         // request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: true)]
         
-        if let allAssignments = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [Assignment] {
+        if let allAssignments = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [Assignment] {
             tableOutlet.setNumberOfRows(allAssignments.count, withRowType: kAssignmentRow)
-            for (index, assignment) in enumerate(allAssignments) {
+            for (index, assignment) in allAssignments.enumerate() {
                 if let assignmentRow = tableOutlet.rowControllerAtIndex(index) as? AssignmentRow {
                     assignmentRow.assignment = assignment
                 }

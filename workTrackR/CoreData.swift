@@ -25,7 +25,8 @@ class CoreData {
                 if let entityName = managedObject.entity.name {
                     let request = NSFetchRequest(entityName: entityName)
                     request.predicate = NSPredicate(format: "SELF == %@", objectId)
-                    return CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil)?.first as? NSManagedObject
+                    
+                    return (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request))!!.first as? NSManagedObject
                 }
             }
         }
@@ -43,7 +44,7 @@ class CoreData {
                     request.sortDescriptors = [NSSortDescriptor(key: orderAttributeName, ascending: false)]
                     let condition = NSPredicate(format: "\(orderAttributeName) > \(sourceOrder) AND \(orderAttributeName) <= \(destinationOrder)")
                     request.predicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [condition, predicate])
-                    if let resultArray = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [NSManagedObject] {
+                    if let resultArray = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [NSManagedObject] {
                         resultArray.map { (object) -> NSManagedObject in
                             object.setValue(object.valueForKey(orderAttributeName)!.integerValue - 1, forKey: orderAttributeName)
                             return object
@@ -53,7 +54,7 @@ class CoreData {
                     request.sortDescriptors = [NSSortDescriptor(key: orderAttributeName, ascending: true)]
                     let condition = NSPredicate(format: "\(orderAttributeName) >= \(destinationOrder) AND \(orderAttributeName) < \(sourceOrder)")
                     request.predicate = NSCompoundPredicate(type: .AndPredicateType, subpredicates: [condition, predicate])
-                    if let resultArray = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [NSManagedObject] {
+                    if let resultArray = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [NSManagedObject] {
                         resultArray.map { (object) -> NSManagedObject in
                             object.setValue(object.valueForKey(orderAttributeName)!.integerValue + 1, forKey: orderAttributeName)
                             return object
@@ -71,7 +72,7 @@ class CoreData {
         request.sortDescriptors = [NSSortDescriptor(key: attributeName, ascending: minimum)]
         request.fetchLimit = 1
         request.predicate = predicate
-        if let object = CoreData.sharedInstance.managedObjectContext!.executeFetchRequest(request, error: nil)?.first as? NSManagedObject {
+        if let object = (try? CoreData.sharedInstance.managedObjectContext!.executeFetchRequest(request))?.first as? NSManagedObject {
             return object.valueForKey(attributeName)?.integerValue ?? 0
         }
         return 0
@@ -97,7 +98,7 @@ class CoreData {
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "at.bintinger.workTrackR" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -116,7 +117,10 @@ class CoreData {
             let url = containerURL.URLByAppendingPathComponent("workTrackR.sqlite")
             var error: NSError? = nil
             var failureReason = "There was an error creating or loading the application's saved data."
-            if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+            do {
+                try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            } catch var error1 as NSError {
+                error = error1
                 coordinator = nil
                 // Report any error we got.
                 var dict = [String: AnyObject]()
@@ -128,6 +132,8 @@ class CoreData {
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 NSLog("Unresolved error \(error), \(error!.userInfo)")
                 abort()
+            } catch {
+                fatalError()
             }
             return coordinator
             
@@ -146,7 +152,8 @@ class CoreData {
         if coordinator == nil {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext()
+
+        var managedObjectContext = NSManagedObjectContext.init(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
         }()
@@ -156,11 +163,16 @@ class CoreData {
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }

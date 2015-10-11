@@ -30,16 +30,22 @@ class bMHelper {
         }
         
         let okAction = UIAlertAction(title: ok, style: .Default) { (action) -> Void in
-            if let textField = controller.textFields?.first as? UITextField where !textField.text.isEmpty {
-                okClosure(text: textField.text)
+            let textF = controller.textFields?.first
+            if !textF!.text!.isEmpty {
+                okClosure(text: textF!.text!)
             }
+            /*
+            if let textField = controller.textFields?.first where textField.text!.isEmpty {
+                okClosure(text: textField.text!)
+            }
+*/
         }
         
         let cancelAction = UIAlertAction(title: cancel, style: .Cancel, handler: nil)
         
         controller.addAction(okAction)
         controller.addAction(cancelAction)
-        
+      
         return controller
     }
     

@@ -12,6 +12,7 @@ import CoreData
 extension Assignment {
 
     
+    
     static func createAssignmentForClient (client:Client, withDescription description:String) -> Assignment {
         let assignment = NSEntityDescription.insertNewObjectForEntityForName(kAssignmentEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Assignment
         assignment.client = client
@@ -53,7 +54,7 @@ extension Assignment {
     static func deleteAllForClient(client:Client) {
         let request = NSFetchRequest(entityName: kAssignmentEntity)
         request.predicate = NSPredicate(format: "client == %@", client)
-        if let allAssignments = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil) as? [Assignment] {
+        if let allAssignments = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [Assignment] {
             for assignment in allAssignments {
                 CoreData.sharedInstance.managedObjectContext?.deleteObject(assignment)
             }
@@ -67,7 +68,7 @@ extension Assignment {
         request.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: false)]
         request.fetchLimit = 1
         
-        if let prevAssignment = CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request, error: nil)?.first as? Assignment {
+        if let prevAssignment = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request))!!.first as? Assignment {
             prevAssignment.end = NSDate()
         }
         CoreData.sharedInstance.saveContext()
@@ -81,6 +82,22 @@ extension Assignment {
     func switchState() {
         running = !running.boolValue
         CoreData.sharedInstance.saveContext()
+    }
+    
+    func getCSV() -> String {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+
+        let cRunning = running
+        let cDesc = desc
+        let cBegin = dateFormatter.stringFromDate(begin)
+        let cEnd =  dateFormatter.stringFromDate(end)
+        let cClientName = client.name
+
+        return "\(cDesc),\(cRunning),'\(cBegin)','\(cEnd)',\(cClientName)\n"
+
     }
     
 }

@@ -40,52 +40,52 @@ class DetailViewController: UIViewController {
         self.view.backgroundColor = kColorDarkGreen
         
         descLabelOutlet.font = kFontThin
-        descLabelOutlet.textColor = kColorWhite
+        descLabelOutlet.textColor = kColorStandard
         
         beginDateTextFieldOutlet.font = kFontThin
-        beginDateTextFieldOutlet.textColor = kColorWhite
+        beginDateTextFieldOutlet.textColor = kColorStandard
         beginDateTextFieldOutlet.backgroundColor = kColorDarkGreen
-        beginDateTextFieldOutlet.layer.borderColor = kColorWhite.CGColor
+        beginDateTextFieldOutlet.layer.borderColor = kColorStandard.CGColor
         beginDateTextFieldOutlet.layer.borderWidth = 1.0
         
         endDateTextFieldOutlet.font = kFontThin
-        endDateTextFieldOutlet.textColor = kColorWhite
+        endDateTextFieldOutlet.textColor = kColorStandard
         endDateTextFieldOutlet.backgroundColor = kColorDarkGreen
-        endDateTextFieldOutlet.layer.borderColor = kColorWhite.CGColor
+        endDateTextFieldOutlet.layer.borderColor = kColorStandard.CGColor
         endDateTextFieldOutlet.layer.borderWidth = 1.0
         
         durationLabelOutlet.font = kFontThin
-        durationLabelOutlet.textColor = kColorWhite
+        durationLabelOutlet.textColor = kColorStandard
         
-        descTextFieldOutlet.textColor = kColorWhite
+        descTextFieldOutlet.textColor = kColorStandard
         descTextFieldOutlet.font = kFontThin
         descTextFieldOutlet.backgroundColor = kColorDarkGreen
-        descTextFieldOutlet.layer.borderColor = kColorWhite.CGColor
+        descTextFieldOutlet.layer.borderColor = kColorStandard.CGColor
         descTextFieldOutlet.layer.borderWidth = 1.0
         
         beginDateLabelOulet.font = kFontThin
-        beginDateLabelOulet.textColor = kColorWhite
+        beginDateLabelOulet.textColor = kColorStandard
         
         endDateLabelOutlet.font = kFontThin
-        endDateLabelOutlet.textColor = kColorWhite
+        endDateLabelOutlet.textColor = kColorStandard
         
         didNotEndLabelOutlet.font = kFontThin
-        didNotEndLabelOutlet.textColor = kColorWhite
+        didNotEndLabelOutlet.textColor = kColorStandard
         
         switchEndDatePickerOutlet.onTintColor = kColorGreen
-        switchEndDatePickerOutlet.tintColor = kColorWhite
+        switchEndDatePickerOutlet.tintColor = kColorStandard
         
         
         beginDatePickerView.backgroundColor = kColorDarkGreen
-        beginDatePickerView.tintColor = kColorWhite
+        beginDatePickerView.tintColor = kColorStandard
         
-        // beginDatePickerView.setValue(kColorWhite, forKeyPath: "textColor")
+        // beginDatePickerView.setValue(kColorStandard, forKeyPath: "textColor")
         // beginDatePickerView.setValue(1.0, forKeyPath: "alpha")
 
         endDatePickerView.backgroundColor = kColorDarkGreen
-        endDatePickerView.tintColor = kColorWhite
+        endDatePickerView.tintColor = kColorStandard
 
-        // endDatePickerView.setValue(kColorWhite, forKeyPath: "textColor")
+        // endDatePickerView.setValue(kColorStandard, forKeyPath: "textColor")
         // endDatePickerView.setValue(1.0, forKeyPath: "alpha")
 
         
@@ -114,6 +114,7 @@ class DetailViewController: UIViewController {
         beginDatePickerView.maximumDate = endDatePickerView.date
         endDatePickerView.minimumDate = beginDatePickerView.date
 
+        print("da:" + assignment.getCSV())
         
         updateDuration()
     }
@@ -158,7 +159,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         //save data
-        assignment.desc = descTextFieldOutlet.text
+        assignment.desc = descTextFieldOutlet.text!
         assignment.begin = beginDatePickerView.date
 
         if switchEndDatePickerOutlet.on {
@@ -185,7 +186,7 @@ class DetailViewController: UIViewController {
     }
     func updateDuration() {
         if assignment.end.timeIntervalSince1970.distanceTo(0.0) != 0.0 {
-            var timeInterval = endDatePickerView.date.timeIntervalSinceDate(beginDatePickerView.date)
+            let timeInterval = endDatePickerView.date.timeIntervalSinceDate(beginDatePickerView.date)
             durationLabelOutlet.text = stringFromTimeInterval(timeInterval) + " hh:mm"
         } else {
             durationLabelOutlet.text = "00:00 hh:mm"

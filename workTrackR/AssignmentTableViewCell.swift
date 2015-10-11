@@ -16,16 +16,16 @@ class AssignmentTableViewCell: UITableViewCell {
            
             // UIView.appearance().backgroundColor = kColorDarkGreen
             beginDateLabelOutlet.font = kFontThinSmall
-            beginDateLabelOutlet.textColor = kColorWhite
+            beginDateLabelOutlet.textColor = kColorStandard
             endDateLabelOutlet.font = kFontThinSmall
-            endDateLabelOutlet.textColor = kColorWhite
+            endDateLabelOutlet.textColor = kColorStandard
             assignmentDescLabelOutlet.font = kFontThin
-            assignmentDescLabelOutlet.textColor = kColorWhite
+            assignmentDescLabelOutlet.textColor = kColorStandard
 
             
             assignmentDescLabelOutlet.text = assignment.desc
             
-            var dateFormatter = NSDateFormatter()
+            let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "d.M. HH:mm:ss"
 
             if assignment.begin.timeIntervalSince1970.distanceTo(0.0) != 0.0 {
