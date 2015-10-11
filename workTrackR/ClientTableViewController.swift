@@ -52,7 +52,7 @@ class ClientTableViewController: UITableViewController {
     private var commandTunnelTimer:NSTimer!
   
     private lazy var fetchedResultsController:NSFetchedResultsController! = {
-        let request = NSFetchRequest(entityName: kClient)
+        let request = NSFetchRequest(entityName: kClientEntity)
         request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: true)]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
@@ -69,7 +69,8 @@ class ClientTableViewController: UITableViewController {
         super.viewDidLoad()
         self.view.backgroundColor = kColorDarkGreen
         
-        self.title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
+//        self.title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
+        self.title = "Archive"
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClient:")
         let editButton = UIBarButtonItem(barButtonSystemItem: .Organize, target: editButtonItem().target, action: editButtonItem().action)
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
@@ -200,7 +201,7 @@ class ClientTableViewController: UITableViewController {
         let source = fetchedResultsController.objectAtIndexPath(sourceIndexPath) as! NSManagedObject
         let destination = fetchedResultsController.objectAtIndexPath(destinationIndexPath) as! NSManagedObject
         
-        CoreData.move(kClient, orderAttributeName: kClientOrder, source: source, toDestination: destination)
+        CoreData.move(kClientEntity, orderAttributeName: kClientOrder, source: source, toDestination: destination)
         
         //den move update erzwingend im tableView updaten
         // tableView.reloadData()

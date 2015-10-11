@@ -53,6 +53,10 @@
 		30B2D7F71BC105CE00651C7E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D7F61BC105CE00651C7E /* ExtensionDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		30C9AC0B1B8CEEAA00804FDB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C9AC0A1B8CEEAA00804FDB /* Common.swift */; };
 		30C9AC0C1B8CF5FA00804FDB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C9AC0A1B8CEEAA00804FDB /* Common.swift */; };
+		30DB26E81BCA505D007EE7A2 /* SelectClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		30DB26EA1BCA657A007EE7A2 /* EditClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		30DB26EC1BCA669F007EE7A2 /* EditClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		30DB26F01BCA69B1007EE7A2 /* EditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26EF1BCA69B1007EE7A2 /* EditClientViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		30EBC3B61BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B51BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		30EBC3B81BC2EBC3008BACB8 /* SelectClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B71BC2EBC3008BACB8 /* SelectClientTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		30EBC3BA1BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B91BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -166,6 +170,10 @@
 		30B2D7F81BC1079300651C7E /* workTrackR WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "workTrackR WatchKit App.entitlements"; sourceTree = "<group>"; };
 		30C9AC081B8CEC2B00804FDB /* workTrackR WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "workTrackR WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		30C9AC0A1B8CEEAA00804FDB /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientTableViewCell.swift; sourceTree = "<group>"; };
+		30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClientTableViewController.swift; sourceTree = "<group>"; };
+		30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClientTableViewCell.swift; sourceTree = "<group>"; };
+		30DB26EF1BCA69B1007EE7A2 /* EditClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClientViewController.swift; sourceTree = "<group>"; };
 		30EBC3B51BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAssignmentTableViewController.swift; sourceTree = "<group>"; };
 		30EBC3B71BC2EBC3008BACB8 /* SelectClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientTableViewController.swift; sourceTree = "<group>"; };
 		30EBC3B91BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAssignmentTableViewCell.swift; sourceTree = "<group>"; };
@@ -239,6 +247,10 @@
 				30EBC3B51BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift */,
 				30EBC3B91BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift */,
 				30EBC3B71BC2EBC3008BACB8 /* SelectClientTableViewController.swift */,
+				30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */,
+				30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */,
+				30DB26EF1BCA69B1007EE7A2 /* EditClientViewController.swift */,
+				30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */,
 				30A918AC1BB05163002AD662 /* AboutViewController.swift */,
 				305DB9251B92029D00F2E6A2 /* ClientTableViewController.swift */,
 				305DB9271B92030400F2E6A2 /* ClientTableViewCell.swift */,
@@ -541,12 +553,16 @@
 				3067D46A1B937E80000D9F1E /* bMHelper.swift in Sources */,
 				30EBC3B61BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift in Sources */,
 				30727E521B8CE47900F76520 /* AppDelegate.swift in Sources */,
+				30DB26F01BCA69B1007EE7A2 /* EditClientViewController.swift in Sources */,
+				30DB26EC1BCA669F007EE7A2 /* EditClientTableViewCell.swift in Sources */,
+				30DB26E81BCA505D007EE7A2 /* SelectClientTableViewCell.swift in Sources */,
 				3067D46C1B93897A000D9F1E /* UIView+Extension.swift in Sources */,
 				3019BACD1BA6F4A400F57405 /* DetailViewController.swift in Sources */,
 				305DB9231B91FF4000F2E6A2 /* CommandTunnel.swift in Sources */,
 				30EBC3B81BC2EBC3008BACB8 /* SelectClientTableViewController.swift in Sources */,
 				303749C81B933F8D00983872 /* Client+Extension.swift in Sources */,
 				30727E551B8CE47900F76520 /* workTrackR.xcdatamodeld in Sources */,
+				30DB26EA1BCA657A007EE7A2 /* EditClientTableViewController.swift in Sources */,
 				305563DF1B98589B00695E46 /* AssignmentTableViewCell.swift in Sources */,
 				305563DB1B984B0E00695E46 /* AssignmentTableViewController.swift in Sources */,
 				307137541B8F96A6003726DB /* CoreData.swift in Sources */,

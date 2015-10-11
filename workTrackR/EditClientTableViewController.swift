@@ -1,16 +1,15 @@
 //
-//  OpenAssignmentTableViewController.swift
+//  EditClientTableViewController.swift
 //  workTrackR
 //
-//  Created by Marc Bintinger on 05.10.15.
+//  Created by Marc Bintinger on 11.10.15.
 //  Copyright © 2015 Marc Bintinger. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-
-extension OpenAssignmentTableViewController : NSFetchedResultsControllerDelegate {
+extension EditClientTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
@@ -18,9 +17,8 @@ extension OpenAssignmentTableViewController : NSFetchedResultsControllerDelegate
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
-
+        CommandTunnel.addCommand(kChangedData)
         
-        //ist updateTimer != nil dann invalidate
         updateTimer?.invalidate()
         updateTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: tableView, selector: "reloadData", userInfo: nil, repeats: false)
         
@@ -30,7 +28,7 @@ extension OpenAssignmentTableViewController : NSFetchedResultsControllerDelegate
         
         switch type {
         case .Insert:
-            //println("Insert")
+            // println("Insert")
             tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
         case .Update:
             //println("Update")
@@ -46,15 +44,16 @@ extension OpenAssignmentTableViewController : NSFetchedResultsControllerDelegate
     
 }
 
+class EditClientTableViewController: UITableViewController {
 
-class OpenAssignmentTableViewController: UITableViewController {
-
+    private var fontSizeObserver:NSObjectProtocol!
     private var updateTimer:NSTimer!
+
     
     private lazy var fetchedResultsController:NSFetchedResultsController! = {
-        let request = NSFetchRequest(entityName: kAssignmentEntity)
-        request.sortDescriptors = [NSSortDescriptor(key: kAssignmentOrder, ascending: false)]
-        // request.predicate = NSPredicate(format: "client == %@", "")
+        let request = NSFetchRequest(entityName: kClientEntity)
+        request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: true)]
+        
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
@@ -63,19 +62,23 @@ class OpenAssignmentTableViewController: UITableViewController {
         }
         return fetchedResultsController
         } ()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        super.viewDidLoad()
         self.view.backgroundColor = kColorDarkGreen
         
+        //self.title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
+        self.title = "Edit Clients"
+        let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClient:")
+        let editButton = UIBarButtonItem(barButtonSystemItem: .Organize, target: editButtonItem().target, action: editButtonItem().action)
+        
+        navigationItem.setRightBarButtonItems([addButton, editButton], animated: true)
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
         
-        // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
-        
-        self.title = "open Assignments"
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,35 +89,27 @@ class OpenAssignmentTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return fetchedResultsController.sections?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sections = fetchedResultsController.sections?[section]
-        return sections?.numberOfObjects ?? 0
-        //        return (fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo)?.numberOfObjects ?? 0
+        let numberSectionsInfo:NSFetchedResultsSectionInfo? = fetchedResultsController.sections?[section]
+        return numberSectionsInfo?.numberOfObjects ?? 0
+        // return (fetchedResultsController.sections?[section] as? NSFetchedResultsSectionInfo)?.numberOfObjects ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(kOpenAssignmentTableViewCell, forIndexPath: indexPath) as! OpenAssignmentTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(kEditClientTableViewCell, forIndexPath: indexPath) as! EditClientTableViewCell
         
-        cell.backgroundColor = kColorDarkGreen
-        cell.assignment = fetchedResultsController.objectAtIndexPath(indexPath) as! Assignment
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = kColorDarkGreen
+        } else {
+            cell.backgroundColor = kColorDarkGreenAlt
+        }
+        
+        cell.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
         
         return cell
-    }
-    
-    //MARK: - Segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == kOpenAssignmentTableViewController {
-            if let indexPath = tableView.indexPathForSelectedRow, assignment = fetchedResultsController.objectAtIndexPath(indexPath) as? Assignment {
-                if let controller = segue.destinationViewController as? SelectClientTableViewController {
-                    controller.assignment = assignment
-                    print("passt eh")
-                }
-            }
-        }
     }
     
     /*
@@ -162,14 +157,15 @@ class OpenAssignmentTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == kEditClientTableViewController {
+            if let indexPath = tableView.indexPathForSelectedRow, client = fetchedResultsController.objectAtIndexPath(indexPath) as? Client {
+                if let controller = segue.destinationViewController as? EditClientViewController {
+                    controller.client = client
+                }
+            }
+        }
     }
-    */
 
 }

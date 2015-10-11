@@ -16,9 +16,9 @@ extension Client {
     
     static func createWithName (name:String) -> Client {
         
-        let client = NSEntityDescription.insertNewObjectForEntityForName(kClient, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Client
+        let client = NSEntityDescription.insertNewObjectForEntityForName(kClientEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Client
         client.name = name
-        client.order = CoreData.minIntegerValueForEntity(kClient, attributeName: kClientOrder) - 1
+        client.order = CoreData.minIntegerValueForEntity(kClientEntity, attributeName: kClientOrder) - 1
 
         CoreData.sharedInstance.saveContext()
 
@@ -27,7 +27,7 @@ extension Client {
     }
     
     static func deleteAll() {
-        let request = NSFetchRequest(entityName: kClient)
+        let request = NSFetchRequest(entityName: kClientEntity)
         if let allClients = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [Client] {
             for client in allClients {
                 CoreData.sharedInstance.managedObjectContext?.deleteObject(client)
@@ -49,7 +49,7 @@ extension Client {
         } else {
             clientsDidSaveArray.append(self)
             if inserted {
-                let minValue = CoreData.minIntegerValueForEntity(kClient, attributeName: kClientOrder)
+                let minValue = CoreData.minIntegerValueForEntity(kClientEntity, attributeName: kClientOrder)
                 order = minValue - 1
             }
        }

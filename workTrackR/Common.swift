@@ -11,9 +11,12 @@ import UIKit
 
 let kAppGroup = "group.at.bintinger.workTrackR"
 let kClientTableViewCell = "ClientTableViewCell"
+let kEditClientTableViewCell = "EditClientTableViewCell"
+let kEditClientTableViewController = "EditClientTableViewController"
+let kSelectClientTableViewCell = "SelectClientTableViewCell"
 let kAssignmentTableViewCell = "AssignmentTableViewCell"
 let kOpenAssignmentTableViewCell = "OpenAssignmentTableViewCell"
-let kClient = "Client"
+let kClientEntity = "Client"
 let kClientOrder = "order"
 let kAssignmentEntity = "Assignment"
 let kAssignmentOrder = "begin"

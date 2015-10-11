@@ -100,4 +100,17 @@ extension Assignment {
 
     }
     
+
+    static func setClient (client:Client, For assignment:Assignment) -> Bool {
+        
+//        let existingClient = CoreData.managedObjectByURI(client.objectID.URIRepresentation()) as? Client
+//        let existingAssignment = CoreData.managedObjectByURI(client.objectID.URIRepresentation()) as? Assignment
+        
+        assignment.client = client
+        CoreData.sharedInstance.saveContext()
+        return true
+    }
+
+
+    
 }

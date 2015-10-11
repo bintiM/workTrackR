@@ -7,17 +7,79 @@
 //
 
 import UIKit
+import CoreData
+
+extension SelectClientTableViewController : NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+        
+        
+        //ist updateTimer != nil dann invalidate
+        updateTimer?.invalidate()
+        updateTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: tableView, selector: "reloadData", userInfo: nil, repeats: false)
+        
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+        switch type {
+        case .Insert:
+            //println("Insert")
+            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+        case .Update:
+            //println("Update")
+            tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+        case .Delete:
+            //println("Delete")
+            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Automatic)
+        case .Move:
+            //println("Move")
+            tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+        }
+    }
+    
+}
+
+
 
 class SelectClientTableViewController: UITableViewController {
 
+    private var updateTimer:NSTimer!
+    
+    var assignment:Assignment! {
+        didSet {
+            title = assignment.desc
+        }
+    }
+    
+    private lazy var fetchedResultsController:NSFetchedResultsController! = {
+        let request = NSFetchRequest(entityName: kClientEntity)
+        request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: false)]
+        // request.predicate = NSPredicate(format: "client == %@", "")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        do {
+            try fetchedResultsController.performFetch()
+        } catch _ {
+        }
+        return fetchedResultsController
+        } ()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.view.backgroundColor = kColorDarkGreen
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
+        
+        // keine leere Zeile im TableView unterhalb
+        tableView.tableFooterView = UIView(frame: CGRectZero)
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,24 +91,34 @@ class SelectClientTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return fetchedResultsController.sections?.count ?? 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        let sections = fetchedResultsController.sections?[section]
+        return sections?.numberOfObjects ?? 0
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(kSelectClientTableViewCell, forIndexPath: indexPath) as! SelectClientTableViewCell
+        
+        cell.backgroundColor = kColorDarkGreen
+        cell.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
+        
         return cell
     }
-    */
-
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //set selected client for assignment
+        assignment.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
+        
+        //save data
+        CoreData.sharedInstance.saveContext()
+        // go back
+        navigationController?.popViewControllerAnimated(true)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -82,14 +154,6 @@ class SelectClientTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
