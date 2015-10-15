@@ -38,6 +38,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         session?.delegate = self
         session?.activateSession()
         
+        // session?.applicationContext.
+        
+        
     }
     
     override func didDeactivate() {
@@ -47,11 +50,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
    
     @IBAction func endAssignmentAction() {
-        try! session!.updateApplicationContext(["msg" : "End Assignment", "running" : false])
+        try! session!.updateApplicationContext(["msg" : "End Assignment", "running" : false, "date" : NSDate()])
     }
     
     @IBAction func startAssignmentAction() {
-        try! session!.updateApplicationContext(["msg" : "Start Assignment", "running" : true])
+        try! session!.updateApplicationContext(["msg" : "Start Assignment", "running" : true, "date" : NSDate()] )
     }
     
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {

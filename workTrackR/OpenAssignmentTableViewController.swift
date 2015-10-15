@@ -50,11 +50,12 @@ extension OpenAssignmentTableViewController : NSFetchedResultsControllerDelegate
 class OpenAssignmentTableViewController: UITableViewController {
 
     private var updateTimer:NSTimer!
+    let unassignedClient = Client.getUnassignedClient()
     
     private lazy var fetchedResultsController:NSFetchedResultsController! = {
         let request = NSFetchRequest(entityName: kAssignmentEntity)
         request.sortDescriptors = [NSSortDescriptor(key: kAssignmentOrder, ascending: false)]
-        // request.predicate = NSPredicate(format: "client == %@", "")
+        request.predicate = NSPredicate(format: "client == %@", self.unassignedClient)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {

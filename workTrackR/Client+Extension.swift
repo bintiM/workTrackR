@@ -27,6 +27,15 @@ extension Client {
         return client
     }
     
+    static func getUnassignedClient () -> Client {
+        
+        let request = NSFetchRequest(entityName: kClientEntity)
+        request.predicate = NSPredicate(format: "name == 'unassigned'")
+        request.fetchLimit = 1
+        
+        return ((try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request))!!.first as? Client)!
+    }
+    
     static func deleteAll() {
         let request = NSFetchRequest(entityName: kClientEntity)
         if let allClients = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request)) as? [Client] {

@@ -37,6 +37,17 @@ extension Assignment {
         
         return assignment
     }
+    
+    static func createAssignmentNow (withDescription description:String) -> Assignment {
+        
+        let assignment = NSEntityDescription.insertNewObjectForEntityForName(kAssignmentEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Assignment
+        
+        assignment.desc = description
+        assignment.begin = NSDate()
+        CoreData.sharedInstance.saveContext()
+        
+        return assignment
+    }
 
     static func createAssignmentForClientWithDate (client:Client, withDescription description:String, begins beginDate:NSDate, ends endDate:NSDate) -> Assignment {
         
@@ -74,6 +85,17 @@ extension Assignment {
         CoreData.sharedInstance.saveContext()
     }
 
+    static func endPreviousAssignment() {
+        let request = NSFetchRequest(entityName: kAssignmentEntity)
+        request.sortDescriptors = [NSSortDescriptor(key: "begin", ascending: false)]
+        request.fetchLimit = 1
+        
+        if let prevAssignment = (try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request))!!.first as? Assignment {
+            prevAssignment.end = NSDate()
+        }
+        CoreData.sharedInstance.saveContext()
+    }
+    
     func delete() {
         CoreData.sharedInstance.managedObjectContext?.deleteObject(self)
         CoreData.sharedInstance.saveContext()

@@ -18,10 +18,17 @@ class ConnectivityHandler : NSObject, WCSessionDelegate {
         willSet { willChangeValueForKey("messages") }
         didSet  { didChangeValueForKey("messages") }
     }
+
+    var running:Bool = false
+    var date:NSDate = NSDate()
+    var msg:NSString = "" {
+        willSet { willChangeValueForKey("msg") }
+        didSet  { didChangeValueForKey("msg") }
+    }
+    
     
     override init() {
         super.init()
-        
         session.delegate = self
         session.activateSession()
         
@@ -37,8 +44,10 @@ class ConnectivityHandler : NSObject, WCSessionDelegate {
         }
     }
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
-        let msg = applicationContext["msg"]!
-        self.messages.append("AppContext \(msg)")
+        self.msg = applicationContext["msg"]! as! NSString
+        self.running = applicationContext["running"]! as! Bool
+        self.date = applicationContext["date"]! as! NSDate
+        
     }
     
     func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
@@ -55,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var connectivityHandler : ConnectivityHandler?
+    var msg : NSString?
+    var unassignedClient:Client = Client.getUnassignedClient()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -72,6 +83,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("WCSession not supported (f.e. on iPad).")
         }
         
+        // watch connectivityHandler
+        self.connectivityHandler = (UIApplication.sharedApplication().delegate as? AppDelegate)?.connectivityHandler
+        //self.connectivityHandler?.addObserver(self, forKeyPath: "messages", options: NSKeyValueObservingOptions(), context: nil)
+        self.connectivityHandler?.addObserver(self, forKeyPath: "msg", options: NSKeyValueObservingOptions(), context: nil)
         
         // iCloud Ordner erstellen
         
@@ -84,6 +99,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if object === connectivityHandler && keyPath == "msg" {
+            NSOperationQueue.mainQueue().addOperationWithBlock {
+                print("fired")
+                self.updateStatus()
+            }
+        }
+    }
+    
+    func updateStatus() {
+        
+        let msg = self.connectivityHandler!.session.receivedApplicationContext["msg"]!
+        let running : Bool = self.connectivityHandler!.session.receivedApplicationContext["running"]!.boolValue
+        // let running = false
+        
+        
+        if running {
+            try! connectivityHandler!.session.updateApplicationContext(["msg" : "\(msg)", "running" : true])
+            Assignment.createAssignmentForClientNow(self.unassignedClient, withDescription: "New Assignment")
+        } else {
+            try! connectivityHandler!.session.updateApplicationContext(["msg" : "\(msg)", "running" : false])
+            Assignment.endPreviousAssignmentForClient(self.unassignedClient)
+        }
+        
+        
+    }
+    
     /* dropbox zeug
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         if DBSession.sharedSession().handleOpenURL(url) {
