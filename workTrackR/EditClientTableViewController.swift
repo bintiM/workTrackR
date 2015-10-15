@@ -67,7 +67,7 @@ class EditClientTableViewController: UITableViewController {
         super.viewDidLoad()
 
         super.viewDidLoad()
-        self.view.backgroundColor = kColorDarkGreen
+        self.view.backgroundColor = kColorBackground
         
         //self.title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
         self.title = "Edit Clients"
@@ -75,7 +75,7 @@ class EditClientTableViewController: UITableViewController {
         let editButton = UIBarButtonItem(barButtonSystemItem: .Organize, target: editButtonItem().target, action: editButtonItem().action)
         
         navigationItem.setRightBarButtonItems([addButton, editButton], animated: true)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorBackground]
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
 
@@ -102,7 +102,7 @@ class EditClientTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(kEditClientTableViewCell, forIndexPath: indexPath) as! EditClientTableViewCell
         
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = kColorDarkGreen
+            cell.backgroundColor = kColorBackground
         } else {
             cell.backgroundColor = kColorDarkGreenAlt
         }

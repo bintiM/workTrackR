@@ -14,6 +14,7 @@ class Client: NSManagedObject {
 
     @NSManaged var name: String
     @NSManaged var order: NSNumber
+    @NSManaged var color: NSData
     @NSManaged var assignments: NSSet
     
 }

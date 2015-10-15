@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 
 // private var clientsDidSaveArray = [Client]()
@@ -19,7 +20,7 @@ extension Client {
         let client = NSEntityDescription.insertNewObjectForEntityForName(kClientEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Client
         client.name = name
         client.order = CoreData.minIntegerValueForEntity(kClientEntity, attributeName: kClientOrder) - 1
-
+        client.color = NSKeyedArchiver.archivedDataWithRootObject(UIColor.whiteColor())
         CoreData.sharedInstance.saveContext()
 
  
@@ -35,7 +36,17 @@ extension Client {
             CoreData.sharedInstance.saveContext()
         }
     }
+
+    func setUIColor (color:UIColor) {
+        let data = NSKeyedArchiver.archivedDataWithRootObject(color)
+        self.color = data
+    }
+    func getUIColor () -> UIColor {
+        let data = NSKeyedUnarchiver.unarchiveObjectWithData(self.color) as! UIColor
+        return data
+    }
     
+
     func delete() {
         CoreData.sharedInstance.managedObjectContext?.deleteObject(self)
         CoreData.sharedInstance.saveContext()

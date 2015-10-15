@@ -67,7 +67,7 @@ class ClientTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = kColorDarkGreen
+        self.view.backgroundColor = kColorBackground
         
 //        self.title = NSLocalizedString("titleClientViewController", value: "Clients", comment: "the navigation bar title")
         self.title = "Archive"
@@ -76,7 +76,7 @@ class ClientTableViewController: UITableViewController {
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
         navigationItem.setRightBarButtonItems([addButton, editButton, deleteAllButton], animated: true)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorBackground]
 
         tableView.tableFooterView = UIView(frame: CGRectZero)
 
@@ -178,7 +178,7 @@ class ClientTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(kClientTableViewCell, forIndexPath: indexPath) as! ClientTableViewCell
 
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = kColorDarkGreen
+            cell.backgroundColor = kColorBackground
         } else {
             cell.backgroundColor = kColorDarkGreenAlt
         }

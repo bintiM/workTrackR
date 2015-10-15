@@ -25,7 +25,7 @@ class AboutViewController: UIViewController {
         aboutTitleLabelOutlet.text = "test"
 
         counter = 0
-        self.view.backgroundColor = kColorDarkGreen
+        self.view.backgroundColor = kColorBackground
         
         self.connectivityHandler = (UIApplication.sharedApplication().delegate as? AppDelegate)?.connectivityHandler
         self.connectivityHandler?.addObserver(self, forKeyPath: "messages", options: NSKeyValueObservingOptions(), context: nil)

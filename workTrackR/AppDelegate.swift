@@ -58,12 +58,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // UITableView.appearance().backgroundColor = kColorDarkGreen
-//        UINavigationBar.appearance().barTintColor = kColorDarkGreen
+        // UITableView.appearance().backgroundColor = kColorBackground
+//        UINavigationBar.appearance().barTintColor = kColorBackground
         UINavigationBar.appearance().barStyle = UIBarStyle.Default
         UINavigationBar.appearance().translucent = true
         UIView.appearance().tintColor = kColorStandard
-        // UIView.appearance().backgroundColor = kColorDarkGreen
+        // UIView.appearance().backgroundColor = kColorBackground
         
         
         if WCSession.isSupported() {

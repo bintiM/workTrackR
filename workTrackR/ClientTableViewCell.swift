@@ -27,7 +27,7 @@ class ClientTableViewCell: UITableViewCell {
             nameButtonOutlet.layer.cornerRadius = 10.0
             nameButtonOutlet.layer.borderColor = kColorStandard.CGColor
             nameButtonOutlet.layer.borderWidth = 1.0
-            nameButtonOutlet.layer.backgroundColor = kColorDarkGreen.CGColor
+            nameButtonOutlet.layer.backgroundColor = kColorBackground.CGColor
             nameButtonOutlet.setTitle("i", forState: .Normal)
         }
     }

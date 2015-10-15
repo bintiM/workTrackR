@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15B22c" minimumToolsVersion="Automatic">
     <entity name="Assignment" representedClassName="Assignment" syncable="YES">
         <attribute name="begin" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
@@ -8,6 +8,7 @@
         <relationship name="client" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="assignments" inverseEntity="Client" syncable="YES"/>
     </entity>
     <entity name="Client" representedClassName="Client" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="assignments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Assignment" inverseName="client" inverseEntity="Assignment" syncable="YES"/>
@@ -17,7 +18,7 @@
     </entity>
     <elements>
         <element name="Assignment" positionX="333" positionY="170" width="128" height="120"/>
-        <element name="Client" positionX="9" positionY="81" width="128" height="88"/>
+        <element name="Client" positionX="9" positionY="81" width="128" height="105"/>
         <element name="CommandTunnel" positionX="142" positionY="-96" width="128" height="60"/>
     </elements>
 </model>

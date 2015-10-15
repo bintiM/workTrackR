@@ -73,9 +73,9 @@ class SelectClientTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = kColorDarkGreen
+        self.view.backgroundColor = kColorBackground
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorBackground]
         
         // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -104,7 +104,7 @@ class SelectClientTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kSelectClientTableViewCell, forIndexPath: indexPath) as! SelectClientTableViewCell
         
-        cell.backgroundColor = kColorDarkGreen
+        cell.backgroundColor = kColorBackground
         cell.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
         
         return cell

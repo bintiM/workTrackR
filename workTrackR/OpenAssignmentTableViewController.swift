@@ -67,9 +67,9 @@ class OpenAssignmentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = kColorDarkGreen
+        self.view.backgroundColor = kColorBackground
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorBackground]
         
         // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -99,7 +99,7 @@ class OpenAssignmentTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kOpenAssignmentTableViewCell, forIndexPath: indexPath) as! OpenAssignmentTableViewCell
         
-        cell.backgroundColor = kColorDarkGreen
+        cell.backgroundColor = kColorBackground
         cell.assignment = fetchedResultsController.objectAtIndexPath(indexPath) as! Assignment
         
         return cell

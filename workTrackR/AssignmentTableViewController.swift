@@ -82,14 +82,14 @@ class AssignmentTableViewController: UITableViewController {
         self.connectivityHandler?.addObserver(self, forKeyPath: "messages", options: NSKeyValueObservingOptions(), context: nil)
 
         
-        self.view.backgroundColor = kColorDarkGreen
+        self.view.backgroundColor = kColorBackground
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addAssignment:")
         let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
         navigationItem.setRightBarButtonItems([addButton, deleteAllButton], animated: true)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorDarkGreen]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorBackground]
         
         // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -196,7 +196,7 @@ class AssignmentTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kAssignmentTableViewCell, forIndexPath: indexPath) as! AssignmentTableViewCell
         
-        cell.backgroundColor = kColorDarkGreen
+        cell.backgroundColor = kColorBackground
         cell.assignment = fetchedResultsController.objectAtIndexPath(indexPath) as! Assignment
         
         return cell

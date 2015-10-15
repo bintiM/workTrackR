@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Settings"
-        self.view.backgroundColor = kColorDarkGreen
+        self.view.backgroundColor = kColorBackground
 /*
         //dropbox stuff
         let appKey = "rt7ui8v0otd1odj"
