@@ -13,14 +13,11 @@ class OpenAssignmentTableViewCell: UITableViewCell {
     var assignment:Assignment! {
         didSet {
             
-//            assignmentDescriptionOutlet.font = kFontThin
-//            assignmentDescriptionOutlet.textColor = kColorStandard
-            
-            
             assignmentDescriptionOutlet.text = assignment.desc
-            /*
+
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "d.M. HH:mm:ss"
+//            dateFormatter.dateFormat = "d.M. HH:mm:ss"
+            dateFormatter.dateFormat = "HH:mm:ss"
             
             if assignment.begin.timeIntervalSince1970.distanceTo(0.0) != 0.0 {
                 beginDateLabelOutlet.text = dateFormatter.stringFromDate(assignment.begin)
@@ -29,16 +26,18 @@ class OpenAssignmentTableViewCell: UITableViewCell {
             }
             if assignment.end.timeIntervalSince1970.distanceTo(0.0) != 0.0 {
                 endDateLabelOutlet.text = dateFormatter.stringFromDate(assignment.end)
-                endButtonOutlet.enabled = false
             } else {
                 endDateLabelOutlet.text = "..."
-                endButtonOutlet.enabled = true
             }
-            */
+
             
         }
     }
     @IBOutlet weak var assignmentDescriptionOutlet: UILabel!
+    @IBOutlet weak var runningSinceLabelOutlet: UILabel!
+    @IBOutlet weak var beginDateLabelOutlet: UILabel!
+    @IBOutlet weak var endedAtLabelOutlet: UILabel!
+    @IBOutlet weak var endDateLabelOutlet: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

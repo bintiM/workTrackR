@@ -73,9 +73,8 @@ class ClientTableViewController: UITableViewController {
         self.title = "Archive"
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addClient:")
         let editButton = UIBarButtonItem(barButtonSystemItem: .Organize, target: editButtonItem().target, action: editButtonItem().action)
-        let deleteAllButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteAll:")
         
-        navigationItem.setRightBarButtonItems([addButton, editButton, deleteAllButton], animated: true)
+        navigationItem.setRightBarButtonItems([addButton, editButton], animated: true)
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorBackground]
 
         tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -145,7 +144,7 @@ class ClientTableViewController: UITableViewController {
         presentViewController(dialog, animated: true, completion: nil)
     }
     
-    
+    /*
     func deleteAll(sender:UIBarButtonItem) {
         
         let title = NSLocalizedString("titleDeleteAllClientDialog", value: "Delete all Clients", comment: "titel in alert view controller")
@@ -159,7 +158,7 @@ class ClientTableViewController: UITableViewController {
         
         presentViewController(dialog, animated: true, completion: nil)
     }
-
+*/
     
     
     // MARK: - Table view data source
@@ -177,11 +176,7 @@ class ClientTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kClientTableViewCell, forIndexPath: indexPath) as! ClientTableViewCell
 
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = kColorBackground
-        } else {
-            cell.backgroundColor = kColorDarkGreenAlt
-        }
+        cell.backgroundColor = kColorBackground
         
         cell.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
         

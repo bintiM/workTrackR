@@ -78,10 +78,6 @@ class AssignmentTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.connectivityHandler = (UIApplication.sharedApplication().delegate as? AppDelegate)?.connectivityHandler
-        self.connectivityHandler?.addObserver(self, forKeyPath: "messages", options: NSKeyValueObservingOptions(), context: nil)
-
-        
         self.view.backgroundColor = kColorBackground
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addAssignment:")

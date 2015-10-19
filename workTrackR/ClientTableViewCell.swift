@@ -19,6 +19,7 @@ class ClientTableViewCell: UITableViewCell {
 
                        
             clientNameLabelOutlet.text = client.name
+            clientNameLabelOutlet.textColor = client.getUIColor()
         }
     }
     

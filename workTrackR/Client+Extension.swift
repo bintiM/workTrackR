@@ -11,8 +11,6 @@ import CoreData
 import UIKit
 
 
-// private var clientsDidSaveArray = [Client]()
-
 extension Client {
     
     static func createWithName (name:String) -> Client {
@@ -20,7 +18,7 @@ extension Client {
         let client = NSEntityDescription.insertNewObjectForEntityForName(kClientEntity, inManagedObjectContext: CoreData.sharedInstance.managedObjectContext!) as! Client
         client.name = name
         client.order = CoreData.minIntegerValueForEntity(kClientEntity, attributeName: kClientOrder) - 1
-        client.color = NSKeyedArchiver.archivedDataWithRootObject(UIColor.whiteColor())
+        client.color = NSKeyedArchiver.archivedDataWithRootObject(UIColor.blackColor())
         CoreData.sharedInstance.saveContext()
 
  
@@ -28,12 +26,22 @@ extension Client {
     }
     
     static func getUnassignedClient () -> Client {
+        let firstLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
+        if firstLaunch  {
+            print("Not first launch.")
+        }
+        else {
+            Client.createWithName("unassigned")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
+        }
         
         let request = NSFetchRequest(entityName: kClientEntity)
         request.predicate = NSPredicate(format: "name == 'unassigned'")
         request.fetchLimit = 1
-        
-        return ((try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request))!!.first as? Client)!
+        let client = ((try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request))!!.first as? Client)!
+        // let client = try? CoreData.sharedInstance.managedObjectContext?.executeFetchRequest(request).first! as? Client
+        return client
+
     }
     
     static func deleteAll() {

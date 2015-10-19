@@ -27,8 +27,6 @@ class AboutViewController: UIViewController {
         counter = 0
         self.view.backgroundColor = kColorBackground
         
-        self.connectivityHandler = (UIApplication.sharedApplication().delegate as? AppDelegate)?.connectivityHandler
-        self.connectivityHandler?.addObserver(self, forKeyPath: "messages", options: NSKeyValueObservingOptions(), context: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,32 +43,7 @@ class AboutViewController: UIViewController {
         try! connectivityHandler.session.updateApplicationContext(["msg" : "Message \(++counter)", "running" : false])
         print("set appContext to stop")
     }
-    
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if object === connectivityHandler && keyPath == "messages" {
-            NSOperationQueue.mainQueue().addOperationWithBlock {
-                self.updateMessages()
-            }
-        }
-    }
-    
-    func updateMessages() {
-        self.messagesLabelOutlet.text = self.connectivityHandler.messages.joinWithSeparator("\n")
-        
-        let msg = self.connectivityHandler.session.receivedApplicationContext["msg"]!
-        let running : Bool = self.connectivityHandler.session.receivedApplicationContext["running"]!.boolValue
-        // let running = false
-        
-        
-        if running {
-            try! connectivityHandler.session.updateApplicationContext(["msg" : "\(msg)", "running" : true])
-        } else {
-            try! connectivityHandler.session.updateApplicationContext(["msg" : "\(msg)", "running" : false])
-        }
 
-        
-    }
 
     /*
     // MARK: - Navigation

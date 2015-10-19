@@ -20,7 +20,7 @@ class AssignmentTableViewCell: UITableViewCell {
             endDateLabelOutlet.font = kFontThinSmall
             endDateLabelOutlet.textColor = kColorStandard
             assignmentDescLabelOutlet.font = kFontThin
-            assignmentDescLabelOutlet.textColor = kColorStandard
+            assignmentDescLabelOutlet.textColor = assignment.client.getUIColor()
 
             
             assignmentDescLabelOutlet.text = assignment.desc

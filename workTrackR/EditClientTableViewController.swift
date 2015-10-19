@@ -101,11 +101,7 @@ class EditClientTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(kEditClientTableViewCell, forIndexPath: indexPath) as! EditClientTableViewCell
         
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = kColorBackground
-        } else {
-            cell.backgroundColor = kColorDarkGreenAlt
-        }
+        cell.backgroundColor = kColorBackground
         
         cell.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
         

@@ -37,8 +37,6 @@ let kColorStandard = UIColor(white: 0, alpha: 1.0)
 let kColorGreen = UIColor(red: 0.706, green: 0.851, blue: 0.247, alpha: 1.00)
 //let kColorBackground = UIColor(red: 0.059, green: 0.580, blue: 0.376, alpha: 1.00)
 let kColorBackground = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.00)
-// let kColorDarkGreenAlt = UIColor(red: 0.031, green: 0.420, blue: 0.271, alpha: 1.00)
-let kColorDarkGreenAlt = UIColor(red: 0.059, green: 0.580, blue: 0.376, alpha: 1.00)
 
 let kColorLila = UIColor(red: 0.451, green: 0.176, blue: 0.698, alpha: 1.00)
 
@@ -60,6 +58,7 @@ let kColor8 = UIColor(red: 0.914, green: 0.502, blue: 0.914, alpha: 1.00) //pink
 let kColor9 = UIColor(red: 0.227, green: 0.988, blue: 1.000, alpha: 1.00) //türkis
 
 
+let kAllCalendarUnits = NSCalendarUnit(rawValue: UInt.max)
 
 
 

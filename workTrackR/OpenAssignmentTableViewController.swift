@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-
 extension OpenAssignmentTableViewController : NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
@@ -50,12 +49,22 @@ extension OpenAssignmentTableViewController : NSFetchedResultsControllerDelegate
 class OpenAssignmentTableViewController: UITableViewController {
 
     private var updateTimer:NSTimer!
-    let unassignedClient = Client.getUnassignedClient()
+    // let unassignedClient = Client.getUnassignedClient()
+    
+
+    
     
     private lazy var fetchedResultsController:NSFetchedResultsController! = {
+        
+        let components = NSCalendar.currentCalendar().components(kAllCalendarUnits, fromDate: NSDate())
+        components.hour = 0
+        components.minute = 0
+        components.second = 0
+        let dateAtStartOfDay = NSCalendar.currentCalendar().dateFromComponents(components)!
+        
         let request = NSFetchRequest(entityName: kAssignmentEntity)
         request.sortDescriptors = [NSSortDescriptor(key: kAssignmentOrder, ascending: false)]
-        request.predicate = NSPredicate(format: "client == %@", self.unassignedClient)
+        request.predicate = NSPredicate(format: "begin >= %@", dateAtStartOfDay)
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
@@ -76,9 +85,11 @@ class OpenAssignmentTableViewController: UITableViewController {
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
         self.title = "open Assignments"
+
         
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,69 +119,24 @@ class OpenAssignmentTableViewController: UITableViewController {
     
     //MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        /*
+        let editOpenAssignmentViewController = self.storyboard!.instantiateViewControllerWithIdentifier("EditOpenAssignmentViewController") as! EditOpenAssignmentViewController
+        
+        self.navigationController!.pushViewController(editOpenAssignmentViewController, animated: true)
+        */
         if segue.identifier == kOpenAssignmentTableViewController {
             if let indexPath = tableView.indexPathForSelectedRow, assignment = fetchedResultsController.objectAtIndexPath(indexPath) as? Assignment {
-                if let controller = segue.destinationViewController as? SelectClientTableViewController {
+                if let controller = segue.destinationViewController as? EditOpenAssignmentViewController {
                     controller.assignment = assignment
-                    print("passt eh")
                 }
             }
         }
+
     }
     
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    override func viewWillDisappear(animated: Bool) {
+        //save data
+        CoreData.sharedInstance.saveContext()
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

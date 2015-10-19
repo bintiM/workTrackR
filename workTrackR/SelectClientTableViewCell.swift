@@ -19,6 +19,7 @@ class SelectClientTableViewCell: UITableViewCell {
             
             
             clientNameLabelOutlet.text = client.name
+            clientNameLabelOutlet.textColor = client.getUIColor()
         }
     }
     
@@ -31,8 +32,7 @@ class SelectClientTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        // self.backgroundColor = kColor1
     }
 
 }

@@ -37,7 +37,6 @@
 		307137561B8F9AA8003726DB /* workTrackR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30727E531B8CE47900F76520 /* workTrackR.xcdatamodeld */; };
 		30727E521B8CE47900F76520 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30727E511B8CE47900F76520 /* AppDelegate.swift */; };
 		30727E551B8CE47900F76520 /* workTrackR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30727E531B8CE47900F76520 /* workTrackR.xcdatamodeld */; };
-		30727E5A1B8CE47900F76520 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30727E581B8CE47900F76520 /* Main.storyboard */; };
 		30727E5C1B8CE47900F76520 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30727E5B1B8CE47900F76520 /* Images.xcassets */; };
 		30727E5F1B8CE47900F76520 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30727E5D1B8CE47900F76520 /* LaunchScreen.xib */; };
 		30727E6B1B8CE47900F76520 /* workTrackRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30727E6A1B8CE47900F76520 /* workTrackRTests.swift */; };
@@ -47,12 +46,15 @@
 		3076BAFE1B9A1934006DB27F /* Assignment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305563E01B985D5900695E46 /* Assignment+Extension.swift */; };
 		3076BB001B9A1A99006DB27F /* CommandTunnel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076BAFF1B9A1A99006DB27F /* CommandTunnel+Extension.swift */; };
 		3076BB011B9A1A99006DB27F /* CommandTunnel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076BAFF1B9A1A99006DB27F /* CommandTunnel+Extension.swift */; };
+		3076C5481BD4F26500A8BD7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3076C5471BD4F26500A8BD7A /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		30A918AB1BB050CA002AD662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A918AA1BB050CA002AD662 /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		30A918AD1BB05163002AD662 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A918AC1BB05163002AD662 /* AboutViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		30B2D7F51BC1057A00651C7E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D7F41BC1057A00651C7E /* InterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
 		30B2D7F71BC105CE00651C7E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D7F61BC105CE00651C7E /* ExtensionDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		30C9AC0B1B8CEEAA00804FDB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C9AC0A1B8CEEAA00804FDB /* Common.swift */; };
 		30C9AC0C1B8CF5FA00804FDB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C9AC0A1B8CEEAA00804FDB /* Common.swift */; };
+		30D24BFC1BCFD81900EC8FE6 /* ConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D24BFB1BCFD81900EC8FE6 /* ConnectivityHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		30D24C001BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D24BFF1BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		30DB26E81BCA505D007EE7A2 /* SelectClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		30DB26EA1BCA657A007EE7A2 /* EditClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		30DB26EC1BCA669F007EE7A2 /* EditClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -122,7 +124,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3009B7EF1BA173BC00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		3009B7F01BA173BC00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3009B7F11BA173BC00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		3009B7F51BA1777C00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -148,7 +149,6 @@
 		30727E501B8CE47900F76520 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30727E511B8CE47900F76520 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30727E541B8CE47900F76520 /* workTrackR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = workTrackR.xcdatamodel; sourceTree = "<group>"; };
-		30727E591B8CE47900F76520 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30727E5B1B8CE47900F76520 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		30727E5E1B8CE47900F76520 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		30727E641B8CE47900F76520 /* workTrackRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = workTrackRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +163,7 @@
 		30727E8C1B8CE50400F76520 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		30727E981B8CE70500F76520 /* workTrackR.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = workTrackR.entitlements; sourceTree = "<group>"; };
 		3076BAFF1B9A1A99006DB27F /* CommandTunnel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CommandTunnel+Extension.swift"; sourceTree = "<group>"; };
+		3076C5471BD4F26500A8BD7A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		30A918AA1BB050CA002AD662 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		30A918AC1BB05163002AD662 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		30B2D7F41BC1057A00651C7E /* InterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -170,6 +171,8 @@
 		30B2D7F81BC1079300651C7E /* workTrackR WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "workTrackR WatchKit App.entitlements"; sourceTree = "<group>"; };
 		30C9AC081B8CEC2B00804FDB /* workTrackR WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "workTrackR WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		30C9AC0A1B8CEEAA00804FDB /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		30D24BFB1BCFD81900EC8FE6 /* ConnectivityHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityHandler.swift; sourceTree = "<group>"; };
+		30D24BFF1BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditOpenAssignmentViewController.swift; sourceTree = "<group>"; };
 		30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientTableViewCell.swift; sourceTree = "<group>"; };
 		30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClientTableViewController.swift; sourceTree = "<group>"; };
 		30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClientTableViewCell.swift; sourceTree = "<group>"; };
@@ -242,13 +245,14 @@
 				30C9AC091B8CEE2C00804FDB /* Common */,
 				30727E981B8CE70500F76520 /* workTrackR.entitlements */,
 				30727E511B8CE47900F76520 /* AppDelegate.swift */,
-				30727E581B8CE47900F76520 /* Main.storyboard */,
 				30A918AA1BB050CA002AD662 /* SettingsViewController.swift */,
 				30EBC3B51BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift */,
+				3076C5471BD4F26500A8BD7A /* Main.storyboard */,
 				30EBC3B91BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift */,
 				30EBC3B71BC2EBC3008BACB8 /* SelectClientTableViewController.swift */,
 				30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */,
 				30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */,
+				30D24BFF1BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift */,
 				30DB26EF1BCA69B1007EE7A2 /* EditClientViewController.swift */,
 				30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */,
 				30A918AC1BB05163002AD662 /* AboutViewController.swift */,
@@ -341,6 +345,7 @@
 				3076BAFF1B9A1A99006DB27F /* CommandTunnel+Extension.swift */,
 				305DB91F1B91FF4000F2E6A2 /* Client.swift */,
 				303749C71B933F8D00983872 /* Client+Extension.swift */,
+				30D24BFB1BCFD81900EC8FE6 /* ConnectivityHandler.swift */,
 				305DB91C1B91FF4000F2E6A2 /* Assignment.swift */,
 				305563E01B985D5900695E46 /* Assignment+Extension.swift */,
 				30C9AC0A1B8CEEAA00804FDB /* Common.swift */,
@@ -498,8 +503,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30727E5A1B8CE47900F76520 /* Main.storyboard in Resources */,
 				3009B7F41BA1777C00ECB719 /* Localizable.strings in Resources */,
+				3076C5481BD4F26500A8BD7A /* Main.storyboard in Resources */,
 				30727E5F1B8CE47900F76520 /* LaunchScreen.xib in Resources */,
 				30727E5C1B8CE47900F76520 /* Images.xcassets in Resources */,
 				3009B8031BA1777D00ECB719 /* InfoPlist.strings in Resources */,
@@ -559,6 +564,7 @@
 				3067D46C1B93897A000D9F1E /* UIView+Extension.swift in Sources */,
 				3019BACD1BA6F4A400F57405 /* DetailViewController.swift in Sources */,
 				305DB9231B91FF4000F2E6A2 /* CommandTunnel.swift in Sources */,
+				30D24C001BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift in Sources */,
 				30EBC3B81BC2EBC3008BACB8 /* SelectClientTableViewController.swift in Sources */,
 				303749C81B933F8D00983872 /* Client+Extension.swift in Sources */,
 				30727E551B8CE47900F76520 /* workTrackR.xcdatamodeld in Sources */,
@@ -566,6 +572,7 @@
 				305563DF1B98589B00695E46 /* AssignmentTableViewCell.swift in Sources */,
 				305563DB1B984B0E00695E46 /* AssignmentTableViewController.swift in Sources */,
 				307137541B8F96A6003726DB /* CoreData.swift in Sources */,
+				30D24BFC1BCFD81900EC8FE6 /* ConnectivityHandler.swift in Sources */,
 				30A918AD1BB05163002AD662 /* AboutViewController.swift in Sources */,
 				305DB9281B92030400F2E6A2 /* ClientTableViewCell.swift in Sources */,
 			);
@@ -656,15 +663,6 @@
 				3009B8091BA1777E00ECB719 /* de */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		30727E581B8CE47900F76520 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				30727E591B8CE47900F76520 /* Base */,
-				3009B7EF1BA173BC00ECB719 /* de */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		30727E5D1B8CE47900F76520 /* LaunchScreen.xib */ = {

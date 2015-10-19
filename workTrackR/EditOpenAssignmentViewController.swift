@@ -1,15 +1,25 @@
 //
-//  SelectClientTableViewController.swift
+//  EditOpenAssignmentViewController.swift
 //  workTrackR
 //
-//  Created by Marc Bintinger on 05.10.15.
+//  Created by Marc Bintinger on 15.10.15.
 //  Copyright © 2015 Marc Bintinger. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-extension SelectClientTableViewController : NSFetchedResultsControllerDelegate {
+public extension UITableView {
+    
+    public func deselectSelectedRowAnimated(animated: Bool) {
+        if let indexPath = indexPathForSelectedRow {
+            deselectRowAtIndexPath(indexPath, animated: animated)
+        }
+    }
+    
+}
+
+extension EditOpenAssignmentViewController : NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
@@ -46,21 +56,17 @@ extension SelectClientTableViewController : NSFetchedResultsControllerDelegate {
 }
 
 
+class EditOpenAssignmentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
-class SelectClientTableViewController: UITableViewController {
 
     private var updateTimer:NSTimer!
+    let unassignedClient = Client.getUnassignedClient()
+    var assignment:Assignment!
     
-    var assignment:Assignment! {
-        didSet {
-            title = assignment.desc
-        }
-    }
     
     private lazy var fetchedResultsController:NSFetchedResultsController! = {
         let request = NSFetchRequest(entityName: kClientEntity)
         request.sortDescriptors = [NSSortDescriptor(key: kClientOrder, ascending: false)]
-        // request.predicate = NSPredicate(format: "client == %@", "")
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreData.sharedInstance.managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         do {
@@ -68,40 +74,53 @@ class SelectClientTableViewController: UITableViewController {
         } catch _ {
         }
         return fetchedResultsController
-        } ()
+    } ()
+  
+    @IBOutlet weak var tableView: UITableView!  //<<-- TableView Outlet
+    @IBOutlet weak var assignmentDesc: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = kColorBackground
+        // self.view.backgroundColor = kColorBackground
+        self.assignmentDesc.text = assignment.desc
         
+        
+        // self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kSelectClientTableViewCell)
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "saveAssignment:")
+        
+        navigationItem.setRightBarButtonItems([saveButton], animated: true)
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: kFontThin, NSForegroundColorAttributeName: kColorStandard, NSBackgroundColorAttributeName: kColorBackground]
         
-        // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        
+        //select first
+        tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
+        
+    }
+    
+    func saveAssignment(sender:UIBarButtonItem) {
+        CoreData.sharedInstance.saveContext()
+        navigationController?.popViewControllerAnimated(true)
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //print("anzahl sections: \(fetchedResultsController.sections?.count)")
-        return fetchedResultsController.sections?.count ?? 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sections = fetchedResultsController.sections?[section]
         // print("anzahl rows in section: \(sections?.numberOfObjects)")
         return sections?.numberOfObjects ?? 0
     }
-
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier(kSelectClientTableViewCell, forIndexPath: indexPath) as! SelectClientTableViewCell
         
         cell.backgroundColor = kColorBackground
@@ -109,51 +128,25 @@ class SelectClientTableViewController: UITableViewController {
         
         return cell
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //set selected client for assignment
         assignment.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
-        
-        //save data
-        CoreData.sharedInstance.saveContext()
-        // go back
-        navigationController?.popViewControllerAnimated(true)
+        //tableView.deselectSelectedRowAnimated(false)
+        //tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func viewWillDisappear(animated: Bool) {
+        if (assignmentDesc.text != nil) {
+            assignment.desc = assignmentDesc.text!
+            CoreData.sharedInstance.saveContext()
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-
-
+    
+    
 }

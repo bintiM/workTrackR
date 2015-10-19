@@ -58,20 +58,16 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
-        let msg = applicationContext["msg"]!
         let running : Bool = applicationContext["running"] as! Bool
-        // let running = false
-        
-        statusLabelOutlet.setText("\(msg)")
  
         if running {
             startAssignmentButtonOutlet.setHidden(true)
             endAssignmentButtonOutlet.setHidden(false)
-
+            statusLabelOutlet.setText("Ass. running")
         } else {
             endAssignmentButtonOutlet.setHidden(true)
             startAssignmentButtonOutlet.setHidden(false)
+            statusLabelOutlet.setText("No Assignment")
         }
     }
-    
 }
