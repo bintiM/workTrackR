@@ -26,11 +26,18 @@ class OpenAssignmentTableViewCell: UITableViewCell {
             }
             if assignment.end.timeIntervalSince1970.distanceTo(0.0) != 0.0 {
                 endDateLabelOutlet.text = dateFormatter.stringFromDate(assignment.end)
+                assignmentDescriptionOutlet.textColor = kColorVeryLightGray
+                beginDateLabelOutlet.textColor = kColorVeryLightGray
+                runningSinceLabelOutlet.textColor = kColorVeryLightGray
+                endDateLabelOutlet.textColor = kColorVeryLightGray
+                endedAtLabelOutlet.textColor = kColorVeryLightGray
             } else {
                 endDateLabelOutlet.text = "..."
+                
             }
-
             
+            // self.contentView.backgroundColor = assignment.client.getUIColor()
+            colorButtonOutlet.backgroundColor = assignment.client.getUIColor()
         }
     }
     @IBOutlet weak var assignmentDescriptionOutlet: UILabel!
@@ -38,6 +45,8 @@ class OpenAssignmentTableViewCell: UITableViewCell {
     @IBOutlet weak var beginDateLabelOutlet: UILabel!
     @IBOutlet weak var endedAtLabelOutlet: UILabel!
     @IBOutlet weak var endDateLabelOutlet: UILabel!
+    
+    @IBOutlet weak var colorButtonOutlet: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

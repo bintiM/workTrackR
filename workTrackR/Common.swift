@@ -31,7 +31,7 @@ let kCommandTunnelEntity = "CommandTunnel"
 
 let kChangedData = "ChangedData"
 
-let kColorVeryLightGray = UIColor(white: 0.98, alpha: 1.0)
+let kColorVeryLightGray = UIColor(white: 0.7, alpha: 1.0)
 let kColorStandard = UIColor(white: 0, alpha: 1.0)
 
 let kColorGreen = UIColor(red: 0.706, green: 0.851, blue: 0.247, alpha: 1.00)
@@ -59,6 +59,8 @@ let kColor9 = UIColor(red: 0.227, green: 0.988, blue: 1.000, alpha: 1.00) //tür
 
 
 let kAllCalendarUnits = NSCalendarUnit(rawValue: UInt.max)
+
+let kUnassignedClientName = "unassigned"
 
 
 
