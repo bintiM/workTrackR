@@ -138,9 +138,6 @@ class ClientTableViewController: UITableViewController {
             
         }
 
-        
-        
-
         presentViewController(dialog, animated: true, completion: nil)
     }
     

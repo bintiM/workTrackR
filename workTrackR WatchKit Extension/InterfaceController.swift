@@ -50,13 +50,40 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
    
     @IBAction func endAssignmentAction() {
-        try! session!.updateApplicationContext(["msg" : "End Assignment", "running" : false, "date" : NSDate()])
+        
+        let messageToSend = ["status":"endAssignment"]
+        session!.sendMessage(messageToSend, replyHandler: { replyMessage in
+            //handle and present the message on screen
+            let value = replyMessage["status"] as? String
+            self.statusLabelOutlet.setText(value)
+            self.endAssignmentButtonOutlet.setHidden(true)
+            self.startAssignmentButtonOutlet.setHidden(false)
+            }, errorHandler: {error in
+                // catch any errors here
+                print(error)
+        })
+        
+        
+        //try! session!.updateApplicationContext(["msg" : "End Assignment", "running" : false, "date" : NSDate()])
     }
     
     @IBAction func startAssignmentAction() {
-        try! session!.updateApplicationContext(["msg" : "Start Assignment", "running" : true, "date" : NSDate()] )
+
+        let messageToSend = ["status":"startAssignment"]
+        session!.sendMessage(messageToSend, replyHandler: { replyMessage in
+            //handle and present the message on screen
+            let value = replyMessage["status"] as? String
+            self.statusLabelOutlet.setText(value)
+            self.startAssignmentButtonOutlet.setHidden(true)
+            self.endAssignmentButtonOutlet.setHidden(false)
+            }, errorHandler: {error in
+                // catch any errors here
+                print(error)
+        })
+        
+        // try! session!.updateApplicationContext(["msg" : "Start Assignment", "running" : true, "date" : NSDate()] )
     }
-    
+    /*
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         let running : Bool = applicationContext["running"] as! Bool
  
@@ -70,4 +97,5 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             statusLabelOutlet.setText("No Assignment")
         }
     }
+*/
 }

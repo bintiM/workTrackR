@@ -18,6 +18,8 @@ class ConnectivityHandler : NSObject, WCSessionDelegate {
         return sharedConnectivityHandler
     }
     
+    var unassignedClient:Client = Client.getUnassignedClient()
+    
     var session = WCSession.defaultSession()
     var messages = [String]() {
         // fire KVO-updates for Swift property
@@ -44,10 +46,35 @@ class ConnectivityHandler : NSObject, WCSessionDelegate {
     // MARK: - WCSessionDelegate
     
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        NSLog("didReceiveMessage: %@", message)
-        if message["request"] as? String == "date" {
-            replyHandler(["date" : String(NSDate())])
+        //handle received message
+        let status = message["status"] as? String
+
+        if (status == "startAssignment") {
+
+            dispatch_async(dispatch_get_main_queue()) {
+                print("create Assignment \(status)")
+                Assignment.createAssignmentForClientNow(self.unassignedClient, withDescription: "New Assignment")
+            }
+            //send a reply
+            replyHandler(["status":"Assignment running"])
+
+            
+        } else if status == "endAssignment" {
+
+            dispatch_async(dispatch_get_main_queue()) {
+                print("end Assignment \(status)")
+                Assignment.endPreviousAssignmentForClient(self.unassignedClient)
+            }
+            //send a reply
+            replyHandler(["status":"Assignment ended"])
+
+            
+        } else {
+            //future status types
         }
+        
+        
+        
     }
     func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
         self.msg = applicationContext["msg"]! as! NSString

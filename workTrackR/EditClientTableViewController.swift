@@ -108,15 +108,23 @@ class EditClientTableViewController: UITableViewController {
         return cell
     }
     
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    func addClient(sender:UIBarButtonItem) {
+        
+        let title = NSLocalizedString("titleCreateClientDialog", value: "Create new Client", comment: "titel in alert view controller")
+        let placeholder = NSLocalizedString("placeholderCreateClientDialog", value: "Client", comment: "placeholder for inputTextField in alert view controller")
+        let message = NSLocalizedString("messageCreateClientDialog", value: "Type in your Clientname", comment: "messager in alert view controller")
+        let ok = NSLocalizedString("okButton", value: "Ok", comment: "ok Button Label")
+        let cancel = NSLocalizedString("cancelButton", value: "Cancel", comment: "cancel button label")
+        
+        
+        let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { (text) -> Void in
+            Client.createWithName(text)
+            
+        }
+        
+        presentViewController(dialog, animated: true, completion: nil)
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

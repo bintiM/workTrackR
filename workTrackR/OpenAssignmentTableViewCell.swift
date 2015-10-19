@@ -32,7 +32,9 @@ class OpenAssignmentTableViewCell: UITableViewCell {
                 endDateLabelOutlet.textColor = kColorVeryLightGray
                 endedAtLabelOutlet.textColor = kColorVeryLightGray
             } else {
-                endDateLabelOutlet.text = "..."
+                endedAtLabelOutlet.text = "Duration"
+                let durationMin = round(-assignment.begin.timeIntervalSinceNow/60)
+                endDateLabelOutlet.text = String(Int(durationMin)) + " min."
                 
             }
             
