@@ -22,6 +22,7 @@ let kAssignmentEntity = "Assignment"
 let kAssignmentOrder = "begin"
 let kAssignmentTableViewController = "AssignmentTableViewController"
 let kOpenAssignmentTableViewController = "OpenAssignmentTableViewController"
+let kOpenAssignmentTableViewControllerSegue = "OpenAssignmentTableViewControllerSegue"
 let kDetailViewController = "DetailViewController"
 
 let kClientRow = "ClientRow"

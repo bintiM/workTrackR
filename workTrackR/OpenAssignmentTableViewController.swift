@@ -124,7 +124,7 @@ class OpenAssignmentTableViewController: UITableViewController {
         
         self.navigationController!.pushViewController(editOpenAssignmentViewController, animated: true)
         */
-        if segue.identifier == kOpenAssignmentTableViewController {
+        if segue.identifier == kOpenAssignmentTableViewControllerSegue {
             if let indexPath = tableView.indexPathForSelectedRow, assignment = fetchedResultsController.objectAtIndexPath(indexPath) as? Assignment {
                 if let controller = segue.destinationViewController as? EditOpenAssignmentViewController {
                     controller.assignment = assignment
