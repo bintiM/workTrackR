@@ -155,7 +155,8 @@ class AssignmentTableViewController: UITableViewController {
         let dialog = bMHelper.singleTextFieldDialogWithTitle(title, message: message, placeholder: placeholder, textFieldValue: "", ok: ok, cancel: cancel) { [weak self] (text) -> Void in
             
             Assignment.createAssignmentForClientNow(self!.client, withDescription: text)
-            try! self!.connectivityHandler.session.updateApplicationContext(["msg" : "\(text) started", "running" : true])
+            
+            // try! self!.connectivityHandler.session.updateApplicationContext(["msg" : "\(text) started", "running" : true])
         }
         
         presentViewController(dialog, animated: true, completion: nil)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8191" systemVersion="15B22c" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RvC-ae-Gi4">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RvC-ae-Gi4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -11,12 +11,13 @@
                 <controller hidesWhenLoading="NO" id="RvC-ae-Gi4" customClass="InterfaceController" customModule="workTrackR_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="ActStatus" id="jOZ-CE-sRj"/>
-                        <button width="1" alignment="left" title="endAssignment" id="uD5-Ib-BhJ">
+                        <button width="64" height="64" alignment="center" verticalAlignment="center" backgroundImage="abbruch.png" id="uD5-Ib-BhJ">
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="endAssignmentAction" destination="RvC-ae-Gi4" id="ERr-zX-Nzh"/>
                             </connections>
                         </button>
-                        <button width="1" alignment="left" title="startAssignment" id="RY0-67-TB5">
+                        <button width="64" height="64" alignment="center" verticalAlignment="center" backgroundImage="plus.png" id="RY0-67-TB5">
                             <connections>
                                 <action selector="startAssignmentAction" destination="RvC-ae-Gi4" id="Y3i-Nf-3tL"/>
                             </connections>

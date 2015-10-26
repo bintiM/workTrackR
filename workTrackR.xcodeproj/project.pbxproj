@@ -16,6 +16,10 @@
 		3019BACD1BA6F4A400F57405 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3019BACC1BA6F4A400F57405 /* DetailViewController.swift */; };
 		303749C81B933F8D00983872 /* Client+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303749C71B933F8D00983872 /* Client+Extension.swift */; };
 		303749C91B933F8D00983872 /* Client+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303749C71B933F8D00983872 /* Client+Extension.swift */; };
+		3040E3961BDEBF4400DAD999 /* abbruch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3040E3941BDEBF4400DAD999 /* abbruch.png */; };
+		3040E3971BDEBF4400DAD999 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 3040E3951BDEBF4400DAD999 /* plus.png */; };
+		3040E3981BDEBF4A00DAD999 /* abbruch.png in Resources */ = {isa = PBXBuildFile; fileRef = 3040E3941BDEBF4400DAD999 /* abbruch.png */; };
+		3040E3991BDEBF4A00DAD999 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 3040E3951BDEBF4400DAD999 /* plus.png */; };
 		305108D81BB00291000649D4 /* workTrackR WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 30727E781B8CE50400F76520 /* workTrackR WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		305108DB1BB00291000649D4 /* workTrackR WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 30727E821B8CE50400F76520 /* workTrackR WatchKit App.app */; };
 		305563DB1B984B0E00695E46 /* AssignmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305563DA1B984B0E00695E46 /* AssignmentTableViewController.swift */; };
@@ -46,22 +50,22 @@
 		3076BAFE1B9A1934006DB27F /* Assignment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305563E01B985D5900695E46 /* Assignment+Extension.swift */; };
 		3076BB001B9A1A99006DB27F /* CommandTunnel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076BAFF1B9A1A99006DB27F /* CommandTunnel+Extension.swift */; };
 		3076BB011B9A1A99006DB27F /* CommandTunnel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3076BAFF1B9A1A99006DB27F /* CommandTunnel+Extension.swift */; };
-		3076C5481BD4F26500A8BD7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3076C5471BD4F26500A8BD7A /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		30A918AB1BB050CA002AD662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A918AA1BB050CA002AD662 /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		30A918AD1BB05163002AD662 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A918AC1BB05163002AD662 /* AboutViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		30B2D7F51BC1057A00651C7E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D7F41BC1057A00651C7E /* InterfaceController.swift */; settings = {ASSET_TAGS = (); }; };
-		30B2D7F71BC105CE00651C7E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D7F61BC105CE00651C7E /* ExtensionDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		3076C5481BD4F26500A8BD7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3076C5471BD4F26500A8BD7A /* Main.storyboard */; };
+		30A918AB1BB050CA002AD662 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A918AA1BB050CA002AD662 /* SettingsViewController.swift */; };
+		30A918AD1BB05163002AD662 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A918AC1BB05163002AD662 /* AboutViewController.swift */; };
+		30B2D7F51BC1057A00651C7E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D7F41BC1057A00651C7E /* InterfaceController.swift */; };
+		30B2D7F71BC105CE00651C7E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D7F61BC105CE00651C7E /* ExtensionDelegate.swift */; };
 		30C9AC0B1B8CEEAA00804FDB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C9AC0A1B8CEEAA00804FDB /* Common.swift */; };
 		30C9AC0C1B8CF5FA00804FDB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C9AC0A1B8CEEAA00804FDB /* Common.swift */; };
-		30D24BFC1BCFD81900EC8FE6 /* ConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D24BFB1BCFD81900EC8FE6 /* ConnectivityHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		30D24C001BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D24BFF1BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		30DB26E81BCA505D007EE7A2 /* SelectClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		30DB26EA1BCA657A007EE7A2 /* EditClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		30DB26EC1BCA669F007EE7A2 /* EditClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		30DB26F01BCA69B1007EE7A2 /* EditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26EF1BCA69B1007EE7A2 /* EditClientViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		30EBC3B61BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B51BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		30EBC3B81BC2EBC3008BACB8 /* SelectClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B71BC2EBC3008BACB8 /* SelectClientTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		30EBC3BA1BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B91BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		30D24BFC1BCFD81900EC8FE6 /* ConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D24BFB1BCFD81900EC8FE6 /* ConnectivityHandler.swift */; };
+		30D24C001BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D24BFF1BCFE44700EC8FE6 /* EditOpenAssignmentViewController.swift */; };
+		30DB26E81BCA505D007EE7A2 /* SelectClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E71BCA505D007EE7A2 /* SelectClientTableViewCell.swift */; };
+		30DB26EA1BCA657A007EE7A2 /* EditClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26E91BCA657A007EE7A2 /* EditClientTableViewController.swift */; };
+		30DB26EC1BCA669F007EE7A2 /* EditClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26EB1BCA669F007EE7A2 /* EditClientTableViewCell.swift */; };
+		30DB26F01BCA69B1007EE7A2 /* EditClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DB26EF1BCA69B1007EE7A2 /* EditClientViewController.swift */; };
+		30EBC3B61BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B51BC2EB71008BACB8 /* OpenAssignmentTableViewController.swift */; };
+		30EBC3B81BC2EBC3008BACB8 /* SelectClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B71BC2EBC3008BACB8 /* SelectClientTableViewController.swift */; };
+		30EBC3BA1BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EBC3B91BC2F245008BACB8 /* OpenAssignmentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +137,8 @@
 		3009B8091BA1777E00ECB719 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3019BACC1BA6F4A400F57405 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		303749C71B933F8D00983872 /* Client+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Client+Extension.swift"; sourceTree = "<group>"; };
+		3040E3941BDEBF4400DAD999 /* abbruch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abbruch.png; sourceTree = "<group>"; };
+		3040E3951BDEBF4400DAD999 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
 		305563DA1B984B0E00695E46 /* AssignmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewController.swift; sourceTree = "<group>"; };
 		305563DE1B98589B00695E46 /* AssignmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignmentTableViewCell.swift; sourceTree = "<group>"; };
 		305563E01B985D5900695E46 /* Assignment+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assignment+Extension.swift"; sourceTree = "<group>"; };
@@ -219,6 +225,8 @@
 		30727E431B8CE47900F76520 = {
 			isa = PBXGroup;
 			children = (
+				3040E3941BDEBF4400DAD999 /* abbruch.png */,
+				3040E3951BDEBF4400DAD999 /* plus.png */,
 				30727E4E1B8CE47900F76520 /* workTrackR */,
 				30727E671B8CE47900F76520 /* workTrackRTests */,
 				30727E791B8CE50400F76520 /* workTrackR WatchKit Extension */,
@@ -504,9 +512,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3009B7F41BA1777C00ECB719 /* Localizable.strings in Resources */,
+				3040E3961BDEBF4400DAD999 /* abbruch.png in Resources */,
 				3076C5481BD4F26500A8BD7A /* Main.storyboard in Resources */,
 				30727E5F1B8CE47900F76520 /* LaunchScreen.xib in Resources */,
 				30727E5C1B8CE47900F76520 /* Images.xcassets in Resources */,
+				3040E3971BDEBF4400DAD999 /* plus.png in Resources */,
 				3009B8031BA1777D00ECB719 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +544,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				30727E8B1B8CE50400F76520 /* Interface.storyboard in Resources */,
+				3040E3991BDEBF4A00DAD999 /* plus.png in Resources */,
+				3040E3981BDEBF4A00DAD999 /* abbruch.png in Resources */,
 				3009B7FE1BA1777D00ECB719 /* InfoPlist.strings in Resources */,
 				30727E8D1B8CE50400F76520 /* Images.xcassets in Resources */,
 			);
@@ -862,6 +874,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -889,6 +902,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				IBSC_MODULE = workTrackR_WatchKit_Extension;
 				INFOPLIST_FILE = "workTrackR WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

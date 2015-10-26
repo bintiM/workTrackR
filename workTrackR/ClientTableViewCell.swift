@@ -22,7 +22,7 @@ class ClientTableViewCell: UITableViewCell {
             clientNameLabelOutlet.textColor = client.getUIColor()
         }
     }
-    
+    /*
     @IBOutlet weak var nameButtonOutlet: UIButton! {
         didSet {
             nameButtonOutlet.layer.cornerRadius = 10.0
@@ -32,6 +32,7 @@ class ClientTableViewCell: UITableViewCell {
             nameButtonOutlet.setTitle("i", forState: .Normal)
         }
     }
+*/
     @IBOutlet weak var clientNameLabelOutlet: UILabel!
     
     @IBAction func nameButtonAction(sender: AnyObject) {

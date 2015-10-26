@@ -25,41 +25,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ClientName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOV-yt-A7l">
-                                            <rect key="frame" x="36" y="11" width="90" height="21"/>
+                                            <rect key="frame" x="8" y="11" width="567" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58p-SS-HAd">
-                                            <rect key="frame" x="8" y="11" width="20" height="20"/>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="20" id="S2Z-y9-mY6"/>
-                                                <constraint firstAttribute="height" constant="20" id="U7H-9T-fJh"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="pfM-9s-FI1"/>
-                                            </constraints>
-                                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                                            <state key="normal" title="Button">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="nameButtonAction:" destination="61m-kv-AiY" eventType="touchUpInside" id="h8Y-0m-bnf"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="58p-SS-HAd" firstAttribute="top" secondItem="vOV-yt-A7l" secondAttribute="top" id="G7Z-cT-wUD"/>
-                                        <constraint firstItem="58p-SS-HAd" firstAttribute="leading" secondItem="DyM-8x-Dxo" secondAttribute="leadingMargin" id="Sto-j8-kVo"/>
+                                        <constraint firstItem="vOV-yt-A7l" firstAttribute="leading" secondItem="DyM-8x-Dxo" secondAttribute="leadingMargin" id="9E3-Q1-Sqd"/>
+                                        <constraint firstItem="vOV-yt-A7l" firstAttribute="width" secondItem="DyM-8x-Dxo" secondAttribute="width" multiplier="1:1" id="OCu-Fu-e0x"/>
                                         <constraint firstItem="vOV-yt-A7l" firstAttribute="centerY" secondItem="DyM-8x-Dxo" secondAttribute="centerY" id="VAn-4O-d47"/>
-                                        <constraint firstItem="vOV-yt-A7l" firstAttribute="leading" secondItem="58p-SS-HAd" secondAttribute="trailing" constant="8" symbolic="YES" id="n3W-4E-Eg2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="clientNameLabelOutlet" destination="vOV-yt-A7l" id="l6J-pX-RJL"/>
-                                    <outlet property="nameButtonOutlet" destination="58p-SS-HAd" id="Ziu-Pf-93x"/>
                                     <segue destination="n81-Qa-t7m" kind="show" identifier="AssignmentTableViewController" id="84e-A7-uLj"/>
                                 </connections>
                             </tableViewCell>
@@ -95,26 +77,26 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUh-d6-ksW">
                                             <rect key="frame" x="8" y="8" width="584" height="43"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="running since:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-37-mGj">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="running since:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-37-mGj">
                                                     <rect key="frame" x="0.0" y="22" width="146" height="21"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.89212854524772933" green="1" blue="0.49814112490474871" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beginDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENG-Oy-oiX">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beginDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENG-Oy-oiX">
                                                     <rect key="frame" x="141" y="22" width="146" height="21"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.23397939685666524" green="1" blue="0.43011338771932883" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ended at:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf7-n8-KfA">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ended at:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bf7-n8-KfA">
                                                     <rect key="frame" x="282" y="22" width="146" height="21"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.42697393232522185" green="0.6351341349934001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -122,7 +104,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AssignmentDescription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXY-xK-dji">
                                                     <rect key="frame" x="0.0" y="0.0" width="564" height="22"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="0.56521622116062409" green="1" blue="0.58685393602650149" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -135,17 +117,16 @@
                                                         <constraint firstAttribute="width" constant="20" id="eCp-rY-njL"/>
                                                     </constraints>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="endDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy6-CR-aH9">
+                                                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="endDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wy6-CR-aH9">
                                                     <rect key="frame" x="423" y="22" width="141" height="21"/>
                                                     <animations/>
-                                                    <color key="backgroundColor" red="1" green="0.47223180725814307" blue="0.69734763386216425" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="bf7-n8-KfA" firstAttribute="height" secondItem="kUh-d6-ksW" secondAttribute="height" multiplier="1:2" id="0jq-2H-vS1"/>
                                                 <constraint firstItem="3eu-37-mGj" firstAttribute="top" secondItem="DXY-xK-dji" secondAttribute="bottom" id="1NN-S1-uPU"/>
@@ -218,7 +199,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bsa-3U-iIv">
-                                <rect key="frame" x="0.0" y="191" width="600" height="400"/>
+                                <rect key="frame" x="0.0" y="203" width="600" height="388"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -260,8 +241,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TKT-80-zDs">
-                                <rect key="frame" x="20" y="138" width="200" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TKT-80-zDs">
+                                <rect key="frame" x="20" y="150" width="300" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -270,11 +251,12 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TKT-80-zDs" firstAttribute="width" secondItem="iyq-8a-kXt" secondAttribute="width" multiplier="1:2" id="9X6-oJ-TQF"/>
                             <constraint firstItem="Bsa-3U-iIv" firstAttribute="leading" secondItem="iyq-8a-kXt" secondAttribute="leading" id="Edc-nf-oJa"/>
                             <constraint firstItem="Bsa-3U-iIv" firstAttribute="top" secondItem="TKT-80-zDs" secondAttribute="bottom" constant="23" id="JC5-eI-nBu"/>
-                            <constraint firstItem="avu-tA-hHs" firstAttribute="leading" secondItem="TKT-80-zDs" secondAttribute="leading" id="Jqc-u4-GTk"/>
-                            <constraint firstItem="TKT-80-zDs" firstAttribute="top" secondItem="avu-tA-hHs" secondAttribute="bottom" constant="8" symbolic="YES" id="MIq-mb-ooz"/>
-                            <constraint firstItem="avu-tA-hHs" firstAttribute="leading" secondItem="iyq-8a-kXt" secondAttribute="leadingMargin" id="j7y-QZ-430"/>
+                            <constraint firstItem="TKT-80-zDs" firstAttribute="top" secondItem="avu-tA-hHs" secondAttribute="bottom" constant="20" id="MIq-mb-ooz"/>
+                            <constraint firstItem="avu-tA-hHs" firstAttribute="leading" secondItem="iyq-8a-kXt" secondAttribute="leadingMargin" id="UQr-q5-u0g"/>
+                            <constraint firstItem="TKT-80-zDs" firstAttribute="leading" secondItem="iyq-8a-kXt" secondAttribute="leadingMargin" id="kdK-JX-UeU"/>
                             <constraint firstItem="avu-tA-hHs" firstAttribute="top" secondItem="9fK-3r-OpF" secondAttribute="bottom" constant="45" id="vW5-Av-Dlg"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Bsa-3U-iIv" secondAttribute="bottom" constant="9" id="wKm-pZ-Q6e"/>
                             <constraint firstAttribute="trailing" secondItem="Bsa-3U-iIv" secondAttribute="trailing" id="yrT-Ua-U09"/>
@@ -290,11 +272,11 @@
             </objects>
             <point key="canvasLocation" x="-2812" y="1225"/>
         </scene>
-        <!--OpenAssignments-->
+        <!--Day View-->
         <scene sceneID="Coe-QK-1Gy">
             <objects>
                 <navigationController id="v27-LZ-010" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="OpenAssignments" id="FP5-Xx-4Cg"/>
+                    <tabBarItem key="tabBarItem" title="Day View" id="FP5-Xx-4Cg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wbn-ge-xag">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

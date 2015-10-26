@@ -84,7 +84,7 @@ class OpenAssignmentTableViewController: UITableViewController {
         // keine leere Zeile im TableView unterhalb
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        self.title = "open Assignments"
+        self.title = "Day View"
 
         
     }
