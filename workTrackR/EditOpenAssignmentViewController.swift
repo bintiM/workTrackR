@@ -101,7 +101,7 @@ class EditOpenAssignmentViewController: UIViewController, UITableViewDelegate, U
         tableView.tableFooterView = UIView(frame: CGRectZero)
         
         //select first
-        tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
+        //tableView.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
         
     }
     
@@ -123,8 +123,14 @@ class EditOpenAssignmentViewController: UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier(kSelectClientTableViewCell, forIndexPath: indexPath) as! SelectClientTableViewCell
         
-        cell.backgroundColor = kColorBackground
-        cell.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
+        let client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
+        cell.client = client
+        
+        if client.name == assignment.client.name {
+            cell.backgroundColor = kColorVeryLightGray
+        } else {
+            cell.backgroundColor = UIColor.whiteColor()
+        }
         
         return cell
     }
@@ -132,8 +138,6 @@ class EditOpenAssignmentViewController: UIViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //set selected client for assignment
         assignment.client = fetchedResultsController.objectAtIndexPath(indexPath) as! Client
-        //tableView.deselectSelectedRowAnimated(false)
-        //tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
     }
     
     override func didReceiveMemoryWarning() {

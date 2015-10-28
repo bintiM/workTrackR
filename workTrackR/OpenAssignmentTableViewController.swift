@@ -113,6 +113,7 @@ class OpenAssignmentTableViewController: UITableViewController {
         
         cell.backgroundColor = kColorBackground
         cell.assignment = fetchedResultsController.objectAtIndexPath(indexPath) as! Assignment
+        cell.updateColors()
         
         return cell
     }
@@ -139,4 +140,10 @@ class OpenAssignmentTableViewController: UITableViewController {
         CoreData.sharedInstance.saveContext()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        //reload data
+        tableView.reloadData()
+    }
+    
 }

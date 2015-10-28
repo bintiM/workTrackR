@@ -63,7 +63,8 @@ class ConnectivityHandler : NSObject, WCSessionDelegate {
 
             dispatch_async(dispatch_get_main_queue()) {
                 print("end Assignment \(status)")
-                Assignment.endPreviousAssignmentForClient(self.unassignedClient)
+//                Assignment.endPreviousAssignmentForClient(self.unassignedClient)
+                Assignment.endPreviousAssignment()
             }
             //send a reply
             replyHandler(["status":"Assignment ended"])
